@@ -1,14 +1,29 @@
 export const loginPage = `
-<div id="inicio">
-      <h1>¡Bienvenida, a Poematik!</h1>
-      <form class="login" id="content-inicio">
-        <input class="radius" type="text" id="email" placeholder="  Email">
-        <input class="radius" type="password" id="password" placeholder="  Password">
-        <p><button id="boton-ingresar" class="radius" type="button" onClick="window.location.href = '/#/home'"> Log in </button></p>
-        <p>O bien ingresa con...</p>
-        <div><img class="logo" src="img/facebook.png" alt="logo de facebook">
-          <img class="logo" src="img/google.png" alt="logo de google"></div>
-        <label class="registrate">¿No tienes una cuenta? <strong>Registrate</strong></label>
-      </form>
-    </div>
+  <figure>
+      <img class="main-img"  src="src/img/poetik-logo.png" alt="Poetik">
+  </figure>
+  <div class="flex-column flex">
+    <h1> poetik </h1>
+    <form class="margin">
+      <div class="error">
+        <span id="error"></span>
+      </div>
+      <input class="inputs block" type="text" id="user" placeholder="Email" />
+      <input class="inputs block" type="password" id="password" placeholder="Password" />
+      <div>
+        <input type="submit" value="Log in" class="font-size buttons block color2 text-color" id="btn-login" onClick="window.location.href = '/#/home'" />
+      </div>
+      <span class="margin text-color">O bien ingresa con...</span>
+      <div class="login-icons">        
+        <a id="fb"><img class="social-media-img" src='/src/img/facebook.png'></img></a>
+        <a id="google"><img class="social-media-img" src='/src/img/google.png'></img></a>
+      </div>
+      <div class="">
+        <p class="">¿No tienes una cuenta? 
+          <a class="" href="#/register" id="registrate">Registrate</a>
+        </p>
+      </div>
+    </form>
+  </div>
 `;
+

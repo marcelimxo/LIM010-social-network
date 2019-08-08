@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Poematica</title>
+  <title>Poematik</title>
   <link rel="stylesheet" href="./src/style.css" />
 </head>
 
@@ -17,30 +17,19 @@
   <script type="module" src="./src/main.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDvjpKbVQV9VFhj2kROad-0ZE_2BlNuA78",
-      authDomain: "poetik-1d0bc.firebaseapp.com",
-      databaseURL: "https://poetik-1d0bc.firebaseio.com",
-      projectId: "poetik-1d0bc",
-      storageBucket: "",
-      messagingSenderId: "85143804945",
-      appId: "1:85143804945:web:c774288a12be0a1f"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-/*     var messageListRef = firebase.database().ref('message_list').on("value", snap => {
+  <!--   <script>
+    var messageListRef = firebase.database().ref('message_list').on("value", snap => {
       console.log(snap.val())
-    }) */
-    /* var newMessageRef = messageListRef.push();
+    })
+    var newMessageRef = messageListRef.push();
     newMessageRef.set({
       'user_id': 'ada',
       'text': 'The Analytical Engine weaves algebraical patterns just as the Jacquard loom weaves flowers and leaves.'
-    }); */
+    });
     // We've appended a new message to the message_list location.
-    /* var path = newMessageRef.toString();
-    console.log(path) */
-  </script>
+    var path = newMessageRef.toString();
+    console.log(path)
+  </script> -->
 
 </body>
 

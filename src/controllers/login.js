@@ -1,6 +1,7 @@
 import { loginPage } from '../views/login.js';
 
 export default () => {
-  //
-  document.getElementById('root').innerHTML = loginPage;
+  const root = document.getElementById('root');
+  root.classList.add('container');
+  root.innerHTML = loginPage;
 };
