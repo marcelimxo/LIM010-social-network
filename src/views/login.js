@@ -8,10 +8,10 @@ export const loginPage = `
       <div class="error">
         <span id="error"></span>
       </div>
-      <input class="inputs block" type="text" id="user" placeholder="Email" />
+      <input class="inputs block" type="email" id="email" placeholder="Email" />
       <input class="inputs block" type="password" id="password" placeholder="Password" />
       <div>
-        <input type="submit" value="Log in" class="font-size buttons block color2 text-color" id="btn-login" onClick="window.location.href = '/#/home'" />
+        <input type="submit" value="Log in" class="font-size buttons block color2 text-color" id="button-login" >
       </div>
       <span class="margin text-color">O bien ingresa con...</span>
       <div class="login-icons">        
