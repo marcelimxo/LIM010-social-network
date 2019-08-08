@@ -5,6 +5,7 @@ Bienvenida a tu primer proyecto del track de Frontend en Laboratoria.
 En este proyecto construirás una red social, cuya temáticas dejaremos a tu elección.
 
 Aquí algunas ideas para inspirarte:
+
 - Alimentación
 - Feminismo
 - Educación
@@ -16,7 +17,7 @@ Las **caraterísticas técnicas** de tu aplicación serán las siguientes:
 - Debe ser diseñada con un enfoque [mobile first](https://darwindigital.com/mobile-first-versus-responsive-web-design/) ([versión traducida](https://translate.google.com/translate?hl=&sl=auto&tl=es&u=https%3A%2F%2Fdarwindigital.com%2Fmobile-first-versus-responsive-web-design))
 - Debe permitir la persintencia de datos
   
-Para implementar tu aplicación usarás *HTML5*, *CCS3* o *SASS*, *Vanilla JavaScript(ES6+)* y *Firebase*.
+Para implementar tu aplicación usarás *HTML5*, *CCS3* o *SASS*, *Vanilla JavaScript(ES6+)*, *Firebase* o *LocalStogarge*
 
 ## Objetivo
 
@@ -73,7 +74,7 @@ A continuación te proporcionamos el layout (diseño) de la vista mobile y deskt
 
 En los proyectos anteriores solo has consumido (leído) datos, por ejemplo, a través de un archivo `json` o utilizando `fetch`.
 
-En este proyecto diseñarás la estructura de esos datos, la forma de consultarlos, actualizarlos, modificarlos y eliminarlos según los requerimiento del usuario. Para llevarlo a cabo utilizaras `Firestore` de `Firebase`.
+En este proyecto diseñarás la estructura de esos datos, la forma de consultarlos, actualizarlos, modificarlos y eliminarlos según los requerimiento del usuario. Para llevarlo a cabo utilizaras `Firestore` de `Firebase` o `LocalStogarge` una `Web Storage API`
 
 #### Firebase
 
@@ -97,11 +98,13 @@ El objetivo de usar Firestore en este proyecto, es que aprendes a manejar y pers
 
 * Ya te damos un diseño (layout) de la vista mobile y desktop, queremos que lo repliques a nivel *pixel perfect*, el contenido, paleta de colores y fuentes, depende de la temática que van a elegir como equipo. La implementación de ese layout deberá formar parte de la *definición de terminado* de tus historias de usuario.
 
-* Los test son **fundamentrales** y deberán formar parte de tu definición de terminado, te recomendamos que comiences a implementarlos desde el comienzo.
+* Los test son **fundamentales** y deberán formar parte de tu definición de terminado, te recomendamos que comiences a implementarlos desde el comienzo.
 
 ## Historias de Usuario
 
-* Como usuario nuevo debo poder crear una cuenta con email y password para poder iniciar sesion. Si el mail o password no es válido, al momento de logearme, debo poder ver un mensaje de error. Por otro lado, necesito también tener la opción de iniciar sesión con mi cuenta de Google o Facebook.
+* Como usuario nuevo debo poder crear una cuenta con email y password válidos para poder iniciar sesion e ingresar a la red social.
+
+* Como usuario nuevo debo poder tener la opción de iniciar sesión con mi cuenta de Google o Facebook para ingresar a la red social sin necesidad de crear una cuenta de email válido.
 
 * Como usuario loggeado debo poder crear, guardar, modificar en el mismo lugar (in place) y eliminar una publicación (post) privada o pública, que puede ser una frase o una imagen.
 
@@ -110,6 +113,29 @@ El objetivo de usar Firestore en este proyecto, es que aprendes a manejar y pers
 * Yo como usuario loggeado, puedo dar like y llevar un conteo de likes en mi publicación así como poder escribir, guardar, editar o eliminar un comentario en mi publicación.
 
 * Al final debo poder ingresar a la red social y poder visualizar los datos de mi perfil creado o editarlos.
+
+* Te dejamos un ejemplo de cómo definir criterios de aceptación y definiciones de terminado para una H.U. Si se te complica definirlas o no tienes idea de que considerar para cada H.U. es de gran ayuda revisar redes sociales como `facebok`, `twitter`, `instagram`, `devopedia` o la red social que más te guste y puedas evaluar qué consideran en cada funcionalidad para darla como terminada y aceptada.
+
+    > Como usuario nuevo debo poder crear una cuenta con email y password para 
+    > poder iniciar sesion. Por otro lado, necesito también tener la opción de 
+    > iniciar sesión con mi cuenta de Google o Facebook.
+    >
+    > **Criterios de aceptación**
+    > - Si el mail o password no es válido, al momento de logearme, debo poder 
+    >   ver un mensaje de error.
+    > - Debe ser visible si hay algún mensaje de error.
+    > - Debo poder ver esta página de creación en Móviles y desktop (responsive). 
+    > - No debe necesitar recargar la página para crear una cuenta (SPA).
+    >
+    > **Definición de terminado**
+    > - La funcionalidad cumple satisface los criterios de aceptación.
+    > - La funcionalidad tiene _test unitarios_.
+    > - El diseño visual corresponde al prototipo de alta fidelidad.
+    > - El código de esta funcionalidad recibió code review.
+    > - La funcionalidad esta desplegada y pública para ser probada. 
+    > - La funcionalidad fue probada manualmente.
+    > - Se hicieron pruebas de usuabilidad y se implementó el feedback si se 
+    >   consideró necesario.
 
 ## Objetivos de aprendizaje
 
@@ -121,6 +147,7 @@ El objetivo de usar Firestore en este proyecto, es que aprendes a manejar y pers
 ### DOM y Web APIs
 - [ ] Manipulación dinámica del DOM
 - [ ] History API
+- [ ] localStorage
 
 ### Javascript
 - [ ] Uso de callbacks
@@ -134,6 +161,7 @@ El objetivo de usar Firestore en este proyecto, es que aprendes a manejar y pers
 - [ ] Observables
 
 ### Testing
+- [ ] Testeo de tus funciones
 - [ ] Testeo asíncrono
 - [ ] Mocking
 
@@ -177,7 +205,7 @@ En los proyectos anteriores hemos consumido (leído) datos, pero todavía no
 habíamos escrito datos (salvar cambios, crear datos, borrar, ...). En este
 proyecto tendrás que crear (salvar) nuevos datos, así como leer, actualizar y
 modificar datos existentes. Estos datos se podrán guardar de forma remota
-usando [Firestore](https://firebase.google.com/docs/firestore).
+usando [Firestore](https://firebase.google.com/docs/firestore) o utilizando 
 
 ### Autenticación y autorización
 
