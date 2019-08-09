@@ -1,5 +1,7 @@
 import loginController from '../controllers/login.js';
 import registerController from '../controllers/register.js';
+import { redirect } from '../utils.js';
+
 
 export default () => {
   const routerSwitch = () => {
@@ -13,6 +15,15 @@ export default () => {
       case '/register':
         registerController();
         break;
+      case '/home':
+
+        if (!firebase.auth().currentUser) {
+          redirect('login');
+        } else {
+          document.getElementById('root').innerHTML = 'Estamos trabajando en esta pantalla! :-)';
+        }
+
+        break;
       default:
         document.getElementById('root').innerHTML = '404 not found';
         break;
@@ -22,7 +33,6 @@ export default () => {
   window.addEventListener('hashchange', () => {
     routerSwitch();
   });
-
 
   routerSwitch();
 };

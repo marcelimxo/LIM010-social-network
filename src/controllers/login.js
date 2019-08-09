@@ -1,5 +1,8 @@
 
 import { loginPage } from '../views/login.js';
+import { login } from '../models/users.js';
+import errorController from './errors.js';
+
 
 export default () => {
   const root = document.getElementById('root');
@@ -7,17 +10,13 @@ export default () => {
   root.innerHTML = loginPage;
 
   const buttonLogin = document.getElementById('button-login');
-  buttonLogin.addEventListener('click', () => {
+  buttonLogin.addEventListener('click', (e) => {
+    e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('usuario Registrado');
-      })
-      .catch((error) => {
-        console.log(`error de codigo:${error.code}`);
-        console.log(`mensaje de error:${error.message}`);
-      });
+    const { error, code } = login(email, password);
+    if (error) {
+      errorController(code);
+    }
   });
 };
