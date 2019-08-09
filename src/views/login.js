@@ -1,6 +1,6 @@
 export const loginPage = `
   <figure>
-      <img class="main-img"  src="src/img/poetik-logo.png" alt="Poetik">
+      <img class="main-img" src="src/img/poetik-logo.png" alt="Poetik">
   </figure>
   <div class="flex-column flex">
     <h1> poetik </h1>
