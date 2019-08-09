@@ -1,5 +1,6 @@
 import loginController from '../controllers/login.js';
 import registerController from '../controllers/register.js';
+import homeController from '../controllers/home.js';
 import { redirect } from '../utils.js';
 
 
@@ -16,11 +17,10 @@ export default () => {
         registerController();
         break;
       case '/home':
-
         if (!firebase.auth().currentUser) {
           redirect('login');
         } else {
-          document.getElementById('root').innerHTML = 'Estamos trabajando en esta pantalla! :-)';
+          homeController();
         }
 
         break;

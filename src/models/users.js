@@ -25,3 +25,14 @@ export const register = async (name, email, password) => {
     return { error: true, code: error.code };
   }
 };
+
+export const getCurrentUser = async () => {
+  try {
+    const userId = await firebase.auth().currentUser.uid;
+    const user = await firebase.database().ref(`/users/${userId}`).once('value');
+
+    return { error: false, user: user.val() };
+  } catch (error) {
+    return { error: true, code: error.code };
+  }
+};
