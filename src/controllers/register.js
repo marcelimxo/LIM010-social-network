@@ -7,7 +7,7 @@ export default () => {
 
   const buttonLogin = document.getElementById('button-register');
   buttonLogin.addEventListener('click', () => {
-    const email = document.getElementById('email-signup').value;
+    const email = document.getElementById('email-signup').value;    
     const password = document.getElementById('password-signup').value;
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
