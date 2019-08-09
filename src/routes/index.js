@@ -1,4 +1,5 @@
 import loginController from '../controllers/login.js';
+import registerController from '../controllers/register.js';
 
 export default () => {
   const routerSwitch = () => {
@@ -9,8 +10,8 @@ export default () => {
       case '/login':
         loginController();
         break;
-      case '/home':
-        document.getElementById('root').innerHTML = 'aqui va el home';
+      case '/register':
+        registerController();
         break;
       default:
         document.getElementById('root').innerHTML = '404 not found';

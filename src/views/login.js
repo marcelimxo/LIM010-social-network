@@ -15,8 +15,8 @@ export const loginPage = `
       </div>
       <span class="margin text-color">O bien ingresa con...</span>
       <div class="login-icons">        
-        <a id="fb"><img class="social-media-img" src='/src/img/facebook.png'></img></a>
-        <a id="google"><img class="social-media-img" src='/src/img/google.png'></img></a>
+        <a id="fb"><img class="social-media-img" src='/src/img/fb.svg'></img></a>
+        <a id="google"><img class="social-media-img" src='/src/img/google.svg'></img></a>
       </div>
       <div class="">
         <p class="">¿No tienes una cuenta? 
@@ -26,4 +26,3 @@ export const loginPage = `
     </form>
   </div>
 `;
-

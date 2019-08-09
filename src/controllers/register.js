@@ -1,17 +1,16 @@
-
-import { loginPage } from '../views/login.js';
+import { registerPage } from '../views/register.js';
 
 export default () => {
   const root = document.getElementById('root');
   root.classList.add('container');
-  root.innerHTML = loginPage;
+  root.innerHTML = registerPage;
 
-  const buttonLogin = document.getElementById('button-login');
+  const buttonLogin = document.getElementById('button-register');
   buttonLogin.addEventListener('click', () => {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = document.getElementById('email-signup').value;
+    const password = document.getElementById('password-signup').value;
 
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(() => {
         console.log('usuario Registrado');
       })
