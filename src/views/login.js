@@ -1,6 +1,6 @@
 export const loginPage = `
   <figure>
-      <img class="main-img"  src="src/img/poetik-logo.png" alt="Poetik">
+      <img class="main-img" src="src/img/poetik-logo.png" alt="Poetik">
   </figure>
   <div class="flex-column flex">
     <h1> poetik </h1>
@@ -15,8 +15,8 @@ export const loginPage = `
       </div>
       <span class="margin text-color">O bien ingresa con...</span>
       <div class="login-icons">        
-        <a id="fb" href= "#/inicio"><img class="social-media-img" src='/src/img/fb.svg'></img></a>
-        <a id="google" href= "#/inicio"><img class="social-media-img" src='/src/img/google.svg'></img></a>
+        <a id="fb" href= "#/home"><img class="social-media-img" src='/src/img/fb.svg'></img></a>
+        <a id="google" href= "#/home"><img class="social-media-img" src='/src/img/google.svg'></img></a>
       </div>
       <div class="">
         <p class="">¿No tienes una cuenta? 

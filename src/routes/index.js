@@ -1,13 +1,13 @@
-import loginController from '../controllers/login.js';
+//import loginController from '../controllers/login.js';
 import registerController from '../controllers/register.js';
-import inicioController from '../controllers/inicio.js';
-
+//import {homeController} from '../controllers/home.js';
+import { redirect } from '../utils.js';
+import { loginController, homeController } from '../controllers/home.js';
 
 export default () => {
   const routerSwitch = () => {
     const { hash } = window.location;
     const currentRoute = hash.replace('#', '');
-
     switch (currentRoute) {
       case '/login':
         loginController();
@@ -15,8 +15,13 @@ export default () => {
       case '/register':
         registerController();
         break;
-        case '/inicio':
-        inicioController();
+      case '/home':
+        if (!firebase.auth().currentUser) {
+          redirect('login');
+        } else {
+          homeController();
+        }
+
         break;
       default:
         document.getElementById('root').innerHTML = '404 not found';
@@ -27,7 +32,6 @@ export default () => {
   window.addEventListener('hashchange', () => {
     routerSwitch();
   });
-
 
   routerSwitch();
 };

@@ -13,5 +13,6 @@ window.addEventListener('load', () => {
     appId: '1:85143804945:web:c774288a12be0a1f',
   };
   firebase.initializeApp(config);
+
   router();
 });
