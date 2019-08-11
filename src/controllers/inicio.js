@@ -1,31 +1,34 @@
-
-import { loginPage } from '../views/login.js';
-import { login, registerUserGoogle } from '../models/users.js';
-import errorController from './errors.js';
-
+import {inicioPage } from '../views/inicio.js';
 
 export default () => {
   const root = document.getElementById('root');
   root.classList.add('container');
-  root.innerHTML = loginPage;
+  root.innerHTML = inicioPage;
 
-  const buttonLogin = document.getElementById('button-login');
-  buttonLogin.addEventListener('click', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const { error, code } = login(email, password);
-    if (error) {
-      errorController(code);
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      var user = firebase.auth().currentUser;
+
+if (user != null) {
+  user.providerData.forEach(function (profile) {
+    console.log("Sign-in provider: " + profile.providerId);
+    console.log("  Provider-specific UID: " + profile.uid);
+    console.log("  Name: " + profile.displayName);
+    console.log("  Email: " + profile.email);
+    console.log("  Photo URL: " + profile.photoURL);
+  });
+}
+      
+    } else {
+      // No user is signed in.
     }
   });
 
   const clickGoogle = document.getElementById("google");
-  clickGoogle.addEventListener('click',async() =>{
-    await registerUserGoogle();
-    /* const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider)
-    .then(function(result) {
+  clickGoogle.addEventListener('click', () =>{
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const token = result.credential.accessToken;
       
@@ -41,13 +44,13 @@ export default () => {
       // The firebase.auth.AuthCredential type that was used.
       const credential = error.credential;
       // ...
-    }); */
+    });
 
   });
 
-  /* const clickFb = document.getElementById('fb');
+  const clickFb = document.getElementById('fb');
   clickFb.addEventListener('click',() =>{
-    var provider = new firebase.auth.FacebookAuthProvider();
+    /*var provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       var token = result.credential.accessToken;
@@ -63,7 +66,7 @@ export default () => {
       // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
       // ...
-    }); 
+    });*/
     var provider = new firebase.auth.FacebookAuthProvider();
     provider.setCustomParameters({
       'display': 'popup'
@@ -76,6 +79,5 @@ export default () => {
       console.log(`mensaje de error:${error.message}`);
 
     });
-  }); */
-  
+  });
 };

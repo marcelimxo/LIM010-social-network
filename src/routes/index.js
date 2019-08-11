@@ -1,14 +1,13 @@
-import loginController from '../controllers/login.js';
+//import loginController from '../controllers/login.js';
 import registerController from '../controllers/register.js';
-import homeController from '../controllers/home.js';
+//import {homeController} from '../controllers/home.js';
 import { redirect } from '../utils.js';
-
+import { loginController, homeController } from '../controllers/home.js';
 
 export default () => {
   const routerSwitch = () => {
     const { hash } = window.location;
     const currentRoute = hash.replace('#', '');
-
     switch (currentRoute) {
       case '/login':
         loginController();
