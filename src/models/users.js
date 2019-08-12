@@ -1,36 +1,33 @@
 import { redirect } from '../utils.js';
 
- const login = async (email, password) => {
+const addUserToFirestore = async (email, name, authId) => {
+  await firebase.firestore().collection('users').doc(`${authId}`).set({
+    email, name,
+  });
+
+  console.log('Document written with ID: ', authId);
+};
+
+const login = async (email, password) => {
   try {
-    await firebase.auth().signInWithEmailAndPassword(email, password);
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        redirect('home');
-      } else {
-        // No user is signed in.
-      }
-    });
-    return { error: false };
+    const { user: { uid } } = await firebase.auth().signInWithEmailAndPassword(email, password);
+
+    const getInfo = await firebase.firestore().collection('users').doc(`${uid}`).get();
+
+    const name = getInfo.data().name;
+
+    return { error: false, name };
   } catch (error) {
     return { error: true, code: error.code };
   }
 };
 
- const register = async (name, email, password) => {
+const registerWithEmail = async (name, email, password) => {
   try {
-    const createUser = await firebase.auth().createUserWithEmailAndPassword(email, password);
-    firebase.database().ref(`users/${createUser.user.uid}`).set({ name, email });
+    const { user: { uid } } = await firebase.auth().createUserWithEmailAndPassword(email, password);
+    console.log(uid);
+    await addUserToFirestore(email, name, uid);
     return { error: false };
-  } catch (error) {
-    return { error: true, code: error.code };
-  }
-};
-
- const getCurrentUser = async () => {
-  try {
-    const userId = await firebase.auth().currentUser.uid;
-    const user = await firebase.database().ref(`/users/${userId}`).once('value');
-    return user.val();
   } catch (error) {
     return { error: true, code: error.code };
   }
@@ -39,11 +36,21 @@ import { redirect } from '../utils.js';
 const registerUserGoogle = async () => {
   try {
     const provider = new firebase.auth.GoogleAuthProvider();
-    const popup = await firebase.auth().signInWithPopup(provider)
-    return popup;
+    const popup = await firebase.auth().signInWithPopup(provider);
+
+    const email = await popup.additionalUserInfo.profile.email;
+    const name = await popup.additionalUserInfo.profile.name;
+
+    const { user: { uid } } = await popup;
+    await addUserToFirestore(email, name, uid);
+
+    return { error: false, name };
   } catch (error) {
     return { error: true, code: error.code };
   }
 };
 
-export { login, register, getCurrentUser, registerUserGoogle}
+
+export {
+  login, registerWithEmail, registerUserGoogle, addUserToFirestore,
+};

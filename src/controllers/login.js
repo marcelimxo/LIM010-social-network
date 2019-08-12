@@ -2,80 +2,50 @@
 import { loginPage } from '../views/login.js';
 import { login, registerUserGoogle } from '../models/users.js';
 import errorController from './errors.js';
+import homePage from '../views/home';
 
 
-export default () => {
-  const root = document.getElementById('root');
-  root.classList.add('container');
-  root.innerHTML = loginPage;
+export const homeController = async (user) => {
+  homePage(user);
+
+  const signOutBtn = await document.getElementById('sign-out');
+  signOutBtn.addEventListener('click', async () => {
+    await firebase.auth().signOut();
+    loginController();
+  });
+};
+
+const root = document.getElementById('root');
+root.classList.add('container');
+
+const insertRoot = (div) => {
+  root.innerHTML = div;
 
   const buttonLogin = document.getElementById('button-login');
-  buttonLogin.addEventListener('click', (e) => {
+  buttonLogin.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const { error, code } = login(email, password);
+    const { name, error, code } = await login(email, password);
     if (error) {
       errorController(code);
+    } else {
+      await homeController(name);
     }
   });
 
-  const clickGoogle = document.getElementById("google");
-  clickGoogle.addEventListener('click',async() =>{
-    await registerUserGoogle();
-    /* const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider)
-    .then(function(result) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const token = result.credential.accessToken;
-      
-      // The signed-in user info.
-      const user = result.user;
-      // ...
-    }).catch(function(error) {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      const credential = error.credential;
-      // ...
-    }); */
-
+  const clickGoogle = document.getElementById('google');
+  clickGoogle.addEventListener('click', async () => {
+    const { name, error, code } = await registerUserGoogle();
+    if (error) {
+      errorController(code);
+    } else {
+      await home(name);
+    }
   });
+};
 
-  /* const clickFb = document.getElementById('fb');
-  clickFb.addEventListener('click',() =>{
-    var provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
-      // ...
-    }).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    }); 
-    var provider = new firebase.auth.FacebookAuthProvider();
-    provider.setCustomParameters({
-      'display': 'popup'
-    });
-    firebase.auth().signInWithPopup(provider)
-    .then(()=> {
-      console.log('usuario Registrado');
-    }).catch(()=>{
-      console.log(`error de codigo:${error.code}`);
-      console.log(`mensaje de error:${error.message}`);
 
-    });
-  }); */
-  
+export const loginController = async () => {
+  insertRoot(loginPage);
 };

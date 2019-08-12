@@ -11,6 +11,10 @@ export default (code) => {
       errorMessage = 'Whoops! El email que intentas ingresar ya está registrado';
       break;
 
+    case 'auth/weak-password':
+      errorMessage = 'La contraseña que intentas ingresar es muy debil';
+      break;
+
       // errores de auth -*login*-
 
     case 'auth/user-disabled':

@@ -4,12 +4,13 @@ export const loginPage = `
   </figure>
   <div class="flex-column flex">
     <h1> poetik </h1>
-    <form class="margin">
-      <div class="error">
+
         <span id="error"></span>
-      </div>
-      <input class="inputs block" type="email" id="email" placeholder="Email" />
-      <input class="inputs block" type="password" id="password" placeholder="Password" />
+      
+    <form class="margin">
+      
+      <input class="inputs block" type="email" id="email" autocomplete="email" placeholder="Email" />
+      <input class="inputs block" autocomplete="" type="password" id="password" placeholder="Password" />
       <div>
         <input type="submit" value="Log in" class="font-size buttons block color2 text-color" id="button-login" >
       </div>
