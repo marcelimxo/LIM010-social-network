@@ -7,6 +7,14 @@
   background-color: #fbfafa;
 }
 
+.flow {
+  flex-flow: nowrap row;
+}
+
+.register-img {
+  width: 26%;
+}
+
 .border-none {
   border: none;
 }
@@ -101,6 +109,12 @@
   font-weight: bolder;
 }
 
+.error {
+  background-color: #ff070787;
+  padding: 20px;
+  margin-top: 10px;
+}
+
 .buttons {
   border-radius: 20px;
   padding-right: 30px;
@@ -108,7 +122,11 @@
   padding-top: 7px;
   padding-bottom: 7px;
   width: fit-content;
-  margin: auto;
+  margin: 10px auto;
+}
+
+.login-icons {
+  margin: 15px auto;
 }
 
 .header-profile {
