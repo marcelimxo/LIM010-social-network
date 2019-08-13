@@ -31,5 +31,6 @@ export default (code) => {
     default:
       break;
   }
+  errorContainer.classList.add('error');
   errorContainer.innerHTML = errorMessage;
 };
