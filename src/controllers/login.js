@@ -2,24 +2,13 @@
 import { loginPage } from '../views/login.js';
 import { login, registerUserGoogle } from '../models/users.js';
 import errorController from './errors.js';
-import homePage from '../views/home';
+import homeController from './home.js';
 
 
-export const homeController = async (user) => {
-  homePage(user);
-
-  const signOutBtn = await document.getElementById('sign-out');
-  signOutBtn.addEventListener('click', async () => {
-    await firebase.auth().signOut();
-    loginController();
-  });
-};
-
-const root = document.getElementById('root');
-root.classList.add('container');
-
-const insertRoot = (div) => {
-  root.innerHTML = div;
+export default async () => {
+  const root = document.getElementById('root');
+  root.classList.add('container');
+  root.innerHTML = loginPage;
 
   const buttonLogin = document.getElementById('button-login');
   buttonLogin.addEventListener('click', async (e) => {
@@ -40,12 +29,7 @@ const insertRoot = (div) => {
     if (error) {
       errorController(code);
     } else {
-      await home(name);
+      await homeController(name);
     }
   });
-};
-
-
-export const loginController = async () => {
-  insertRoot(loginPage);
 };

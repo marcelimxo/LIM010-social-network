@@ -30,6 +30,7 @@ export default () => {
   };
 
   window.addEventListener('hashchange', () => {
+    console.log('hola router');
     routerSwitch();
   });
 
