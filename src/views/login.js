@@ -16,7 +16,7 @@ export const loginPage = `
       </div>
       <span class="margin text-color">O bien ingresa con...</span>
       <div class="login-icons">        
-        <a id="google" href= "#/home"><img class="social-media-img" src='/src/img/google.svg'></img></a>
+        <a id="google" href= "#/home"><img class="social-media-img" src='src/img/google.png'></img></a>
       </div>
       <div class="">
         <p class="">¿No tienes una cuenta? 
