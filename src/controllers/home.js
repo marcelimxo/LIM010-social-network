@@ -9,7 +9,7 @@ export default async (user) => {
 
   if (whoIsLogged) {
   // User is signed in.
-    console.log(whoIsLogged.providerData);
+    console.log(`Data: ${whoIsLogged.providerData}`);
   }
 
   const signOutBtn = await document.getElementById('sign-out');
