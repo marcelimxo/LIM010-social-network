@@ -5,7 +5,7 @@ import { redirect } from '../utils.js';
 
 
 export default () => {
-  const routerSwitch = () => {
+  const routerSwitch = async () => {
     const { hash } = window.location;
     const currentRoute = hash.replace('#', '');
     switch (currentRoute) {
@@ -16,7 +16,7 @@ export default () => {
         registerController();
         break;
       case '/home':
-        if (!firebase.auth().currentUser) {
+        if (!await firebase.auth().currentUser) {
           redirect('login');
         } else {
           homeController();

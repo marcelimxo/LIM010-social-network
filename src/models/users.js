@@ -1,11 +1,10 @@
-import { redirect } from '../utils.js';
 
 const addUserToFirestore = async (email, name, authId) => {
   await firebase.firestore().collection('users').doc(`${authId}`).set({
     email, name,
   });
 
-  console.log('Document written with ID: ', authId);
+  // console.log('Document written with ID: ', authId);
 };
 
 const login = async (email, password) => {
@@ -25,7 +24,7 @@ const login = async (email, password) => {
 const registerWithEmail = async (name, email, password) => {
   try {
     const { user: { uid } } = await firebase.auth().createUserWithEmailAndPassword(email, password);
-    console.log(uid);
+
     await addUserToFirestore(email, name, uid);
     return { error: false };
   } catch (error) {
