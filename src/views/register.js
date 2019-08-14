@@ -1,5 +1,5 @@
 export const registerPage = ` 
-<div class="margin flex-column flex" >
+<div class="margin flex-column flex published-post"  >
       <h1 class="name text-color"> Registrate </h1>
       <span id="error"></span>
       <form class="margin">

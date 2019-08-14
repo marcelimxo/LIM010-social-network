@@ -66,6 +66,7 @@
 
 .main-img {
   width: 50%;
+  margin:40px;
 }
 .block {
   display: block;
@@ -75,12 +76,19 @@
 }
 .inputs {
   margin: auto;
-  margin-bottom: 20px;
+  margin-top:20px;
+  margin-bottom: 40px;
   text-align: center;
   border: 1px solid #e6e6e6;
   border-radius: 20px;
-  height: 30px;
-  width: 50%;
+  height: 43px;
+  width: 90%;
+  padding: 9px 0 7px 8px;
+  outline: 0px;
+}
+
+input:focus {
+  border: 1px solid #ffdddd;
 }
 
 .menu-button {
@@ -111,8 +119,10 @@
 
 .error {
   background-color: #ff070787;
-  padding: 20px;
-  margin-top: 10px;
+  padding: 15px;
+  margin-top: 20px;
+  margin-left: 15px
+  width: 90%;
 }
 
 .buttons {
@@ -123,6 +133,7 @@
   padding-bottom: 7px;
   width: fit-content;
   margin: 10px auto;
+  outline: 0px;
 }
 
 .login-icons {
@@ -267,10 +278,10 @@
     display: block;
   }
   .main-img {
-    width: 100%;
+    width: 90%;
   }
   .inputs {
-    width: 100%;
+    width: 90%;
   }
   .name {
     font-size: 30px;
