@@ -49,7 +49,24 @@ const registerUserGoogle = async () => {
   }
 };
 
+const registerUserFacebook = async () => {
+  try {
+    var provider = new firebase.auth.FacebookAuthProvider();
+    const popup = await firebase.auth().signInWithPopup(provider);
+
+    const email = await popup.additionalUserInfo.profile.email;
+    const name = await popup.additionalUserInfo.profile.name;
+
+    const { user: { uid } } = await popup;
+    await addUserToFirestore(email, name, uid);
+
+    return { error: false, name };
+  } catch (error) {
+    return { error: true, code: error.code };
+  }
+};
+
 
 export {
-  login, registerWithEmail, registerUserGoogle, addUserToFirestore,
+  login, registerWithEmail, registerUserGoogle, registerUserFacebook, addUserToFirestore,
 };
