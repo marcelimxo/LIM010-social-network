@@ -1,6 +1,7 @@
 import loginController from '../controllers/login.js';
 import registerController from '../controllers/register.js';
 import homeController from '../controllers/home.js';
+import { getUserInfo } from '../models/users.js';
 import { redirect } from '../utils.js';
 
 
@@ -19,7 +20,10 @@ export default () => {
         if (!await firebase.auth().currentUser) {
           redirect('login');
         } else {
-          homeController();
+          const { uid } = await firebase.auth().currentUser;
+          const { name } = await getUserInfo(uid);
+
+          homeController(name);
         }
         break;
 

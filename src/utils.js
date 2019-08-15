@@ -1,3 +1,6 @@
-export const redirect = (path) => {
+const redirect = (path) => {
   window.location.hash = `/${path}`;
 };
+
+
+export { redirect };

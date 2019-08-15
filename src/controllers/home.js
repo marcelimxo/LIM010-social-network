@@ -5,11 +5,11 @@ import { redirect } from '../utils.js';
 export default async (user) => {
   homePage(user);
 
-  const whoIsLogged = firebase.auth().currentUser;
+  const currentUser = firebase.auth().currentUser;
 
-  if (whoIsLogged) {
+  if (currentUser) {
   // User is signed in.
-    console.log(`Data: ${whoIsLogged.providerData}`);
+    console.log(currentUser.providerData);
   }
 
   const signOutBtn = await document.getElementById('sign-out');
