@@ -43,6 +43,10 @@
 .color3 {
   color: #afe0ea;
 }
+
+.color4 {
+  color: #999;
+}
 .container-post {
   background-color: #efefef75;
 }
@@ -109,8 +113,11 @@ input:focus {
 }
 
 .social-media-img {
-  width: 7%;
+  width: 100%;
+  height: 100%;
+  outline: none;
 }
+
 
 .name {
   font-size: 40px;
@@ -121,7 +128,7 @@ input:focus {
   background-color: #ff070787;
   padding: 15px;
   margin-top: 20px;
-  margin-left: 15px
+  margin-left: 15px;
   width: 90%;
 }
 
@@ -138,6 +145,14 @@ input:focus {
 
 .login-icons {
   margin: 15px auto;
+  
+}
+
+.buttons-icons{
+  height:50px;
+  width:50px;
+  border: none;
+  outline:none;
 }
 
 .header-profile {
@@ -286,9 +301,7 @@ input:focus {
   .name {
     font-size: 30px;
   }
-  .social-media-img {
-    width: 7%;
-  }
+  
   .post {
     width: 70%;
   }
@@ -299,4 +312,3 @@ input:focus {
     flex-direction: row;
     align-items: start;
   }
-}

@@ -34,8 +34,8 @@ export default async () => {
   });
 
   const clickFacebook = document.getElementById('fb');
-  clickFacebook.addEventListener('click',async ()=>{
-    const { name, error, code} = await registerUserFacebook();
+  clickFacebook.addEventListener('click', async () => {
+    const { name, error, code } = await registerUserFacebook();
     if (error) {
       errorController(code);
     } else {

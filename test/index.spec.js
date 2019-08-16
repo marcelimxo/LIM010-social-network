@@ -1,8 +1,8 @@
 // importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import { addUserToFirestore } from '../src/models/users.js';
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
+describe('addUserToFirestore', () => {
+  it('debería añadir a firestore un usuario', () => {
     expect(typeof myFunction).toBe('function');
   });
 });
