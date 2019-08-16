@@ -1,4 +1,7 @@
-export const loginPage = `
+import { template } from '../utils.js';
+
+export default () => {
+  const loginPage = `
   <figure>
       <img class="main-img" src="src/img/poetik-logo.png" alt="Poetik">
   </figure>
@@ -28,4 +31,5 @@ export const loginPage = `
   </div>
 `;
 
-// <a id="fb" href= "#/home"><img class="social-media-img" src='/src/img/fb.svg'></img></a>
+  template(loginPage);
+};

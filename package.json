@@ -2,7 +2,7 @@
   "name": "social-network",
   "version": "1.0.0",
   "description": "Social Network @ Laboratoria",
-  "main": "src/main.js",
+  "main": "src/index.html",
   "keywords": [
     "javascript",
     "firebase",
@@ -18,8 +18,10 @@
     "pretest": "npm run lint"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
     "@babel/plugin-transform-modules-commonjs": "^7.2.0",
-    "babel-core": "7.0.0-bridge.0",
+    "@babel/preset-env": "^7.5.5",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.8.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
@@ -31,8 +33,5 @@
     "regenerator-runtime": "^0.13.1",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0"
-  },
-  "dependencies": {
-    "babel-loader": "^8.0.0-beta.6"
   }
 }

@@ -1,38 +1,55 @@
 import loginController from '../controllers/login.js';
 import registerController from '../controllers/register.js';
 import homeController from '../controllers/home.js';
+
 import { redirect } from '../utils.js';
 
 
 export default () => {
   const routerSwitch = async () => {
+    const routesWithoutAuth = ['/login', '/register'];
     const { hash } = window.location;
     const currentRoute = hash.replace('#', '');
+    let next;
     switch (currentRoute) {
       case '/login':
-        loginController();
+        next = loginController;
         break;
       case '/register':
-        registerController();
+        next = registerController;
         break;
       case '/home':
-        if (!await firebase.auth().currentUser) {
-          redirect('login');
-        } else {
-          homeController();
-        }
+        next = homeController;
         break;
-
+      case '':
+        redirect('home');
+        return;
       default:
         document.getElementById('root').innerHTML = '404 not found';
         break;
     }
+
+    // middleware
+    firebase.auth().onAuthStateChanged((user) => {
+      const noAuthNedeed = routesWithoutAuth.find(route => currentRoute === route);
+      if (user) {
+        if (noAuthNedeed) {
+          redirect('home');
+        } else {
+          next();
+        }
+      } else if (noAuthNedeed) {
+        next();
+      } else {
+        redirect('login');
+      }
+    });
   };
 
+
+  window.onload = () => routerSwitch();
+
   window.addEventListener('hashchange', () => {
-    console.log('hola router');
     routerSwitch();
   });
-
-  routerSwitch();
 };

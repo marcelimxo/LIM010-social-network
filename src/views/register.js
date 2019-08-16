@@ -1,4 +1,7 @@
-export const registerPage = ` 
+import { template } from '../utils.js';
+
+export default () => {
+  const registerPage = ` 
 <div class="margin flex-column flex published-post"  >
       <h1 class="name text-color"> Registrate </h1>
       <span id="error"></span>
@@ -13,3 +16,6 @@ export const registerPage = `
           </form>
         </div>
    `;
+
+  template(registerPage);
+};
