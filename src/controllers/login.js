@@ -1,17 +1,13 @@
 
-import { loginPage } from '../views/login.js';
+import loginPage from '../views/login.js';
 import {
   login, addUserToFirestore, registerUserGoogle, registerUserFacebook,
 } from '../models/users.js';
 import errorController from './errors.js';
 import { redirect } from '../utils.js';
 
-
 export default async () => {
-  const root = document.getElementById('root');
-  root.classList.add('container');
-  root.innerHTML = loginPage;
-
+  loginPage();
   const buttonLogin = document.getElementById('button-login');
   buttonLogin.addEventListener('click', async (e) => {
     e.preventDefault();
