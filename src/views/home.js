@@ -1,9 +1,16 @@
 import { redirect } from '../utils.js';
+import { addPost } from '../models/users.js';
 
 export default (username) => {
   const welcomeMsg = `
-  <button id="sign-out">salir</button>
-    <p>¡Bienvenidx, ${username}!</p>`;
+    <p>¡Bienvenidx, ${username}!</p>
+    <button id="sign-out">salir</button>
+    <div  class= "conten">
+      <h5>Crear Post</h5>
+      <textarea  type="text" id = "post-text" placeholder="¿Qué estás pensando?" class="input-post"></textarea>
+      <button id="button-post">PUBLICAR</button>
+
+    </div>`;
   document.getElementById('root').innerHTML = welcomeMsg;
 
   const signOutBtn = document.getElementById('sign-out');
@@ -12,4 +19,25 @@ export default (username) => {
       redirect('login');
     });
   });
+
+  const addPostOnSubmit = (evt) => {
+    evt.preventDefault();
+    const { uid } = firebase.auth().currentUser;
+    firebase.auth().onAuthStateChanged(() => {
+      if (uid) {
+        const inputText = document.getElementById('post-text');
+        const inputSpace = '                                                                                ';
+        const inputTrim = inputSpace.trim();
+        if (inputText.value === '' || inputText.value === inputTrim || inputText.value === ' ') {
+          alert('Ingresa un contenido');
+        } else {
+          addPost(inputText.value, uid);
+          inputText.value = '';
+        }
+      }
+    });
+  };
+
+  const btnPost = document.getElementById('button-post');
+  btnPost.addEventListener('click', addPostOnSubmit);
 };
