@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow-callback */
 
 const addUserToFirestore = async (email, name, authId) => {
   await firebase.firestore().collection('users').doc(`${authId}`).set({

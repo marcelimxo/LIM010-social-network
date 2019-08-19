@@ -1,5 +1,7 @@
 import { redirect } from '../utils.js';
-import { addPost } from '../models/posts.js';
+import {
+  addPost, getPost, editTextPost,
+} from '../models/posts.js';
 
 export default (username) => {
   const welcomeMsg = `
@@ -40,4 +42,11 @@ export default (username) => {
 
   const btnPost = document.getElementById('button-post');
   btnPost.addEventListener('click', addPostOnSubmit);
+
+
+  getPost();
+  const id = 'Z4WpIQpoBXS7P1pva7RD';
+
+  editTextPost(id, 'Mujeres al poder');
+
 };

@@ -1,16 +1,36 @@
 const addPost = async (textNewPost, uid) => {
   const gettingInfo = await firebase.firestore().collection('users').doc(`${uid}`).get();
-  firebase.firestore().collection('users').doc(`${uid}`).collection('posts')
+  firebase.firestore().collection('posts')
     .add({
-      content: textNewPost,
-      UID: uid,
-      name: gettingInfo.data().name,
-      reaction: 0,
-      reactionsad: 0,
-      reactionlike: 0,
-      reactionlove: 0,
+      UidUser: uid,
       date: firebase.firestore.FieldValue.serverTimestamp(),
+      content: textNewPost,
+      nameUser: gettingInfo.data().name,
+      public: true,
+      reactionlike: 0,
     });
 };
 
-export { addPost };
+const getPost = () => {
+  firebase.firestore().collection('posts').get().then((onSnapshot) => {
+    onSnapshot.forEach((doc) => {
+      console.log(doc.data());
+    });
+  });
+};
+
+const editStatusPost = async (uidPost, status) => {
+  await firebase.firestore().collection('posts').doc(`${uidPost}`).update({
+    public: status,
+  });
+};
+
+const editTextPost = async (uidPost, text) => {
+  await firebase.firestore().collection('posts').doc(`${uidPost}`).update({
+    content: text,
+  });
+};
+
+export {
+  getPost, editStatusPost, addPost, editTextPost,
+};
