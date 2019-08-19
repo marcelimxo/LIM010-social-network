@@ -1,5 +1,5 @@
 import { redirect } from '../utils.js';
-import { addPost } from '../models/users.js';
+import { addPost } from '../models/posts.js';
 
 export default (username) => {
   const welcomeMsg = `

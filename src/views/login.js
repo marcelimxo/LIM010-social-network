@@ -5,7 +5,7 @@ export default () => {
   <figure>
       <img class="main-img" src="src/img/poetik-logo.png" alt="Poetik">
   </figure>
-  <div class="flex-column flex">
+  <div>
     <h4 class= "color4"> Para la mayor parte de la historia, “Anónimo” era una mujer. </h4>
 
         <span id="error"></span>
