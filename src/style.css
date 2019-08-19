@@ -43,6 +43,10 @@
 .color3 {
   color: #afe0ea;
 }
+
+.color4 {
+  color: #999;
+}
 .container-post {
   background-color: #efefef75;
 }
@@ -109,8 +113,11 @@ input:focus {
 }
 
 .social-media-img {
-  width: 7%;
+  width: 100%;
+  height: 100%;
+  outline: none;
 }
+
 
 .name {
   font-size: 40px;
@@ -138,6 +145,14 @@ input:focus {
 
 .login-icons {
   margin: 15px auto;
+  
+}
+
+.buttons-icons{
+  height:50px;
+  width:50px;
+  border: none;
+  outline:none;
 }
 
 .header-profile {
@@ -286,9 +301,7 @@ input:focus {
   .name {
     font-size: 30px;
   }
-  .social-media-img {
-    width: 7%;
-  }
+  
   .post {
     width: 70%;
   }
@@ -299,4 +312,108 @@ input:focus {
     flex-direction: row;
     align-items: start;
   }
+
+  .conten{
+    border-style: ridge;
+     width: 50%;
+     height: 80%
+    }
+    .input-post{
+       width: 100%; 
+       font-size: 20px;
+      text-align: center;
+      border: none;
+    }
+    
+    h5{
+        background-color: #f5f6f7;
+        border-bottom: 1px solid #dddfe2;
+        border-radius: 2px 2px 0 0;
+        font-weight: bold;
+        padding: 8px 6px;
+        margin: 0px;
+    }
+      
+    .imagen-get{
+      display: flex;
+      flex-direction: row;
+   }
+   .fondo-avatar{
+    background-color: #dfdbdb;
+    border-radius: 50%;
+    padding: 10px; 
+    margin-right: 10%;     
+    margin-bottom: 10%; 
+   }
+
+   .imagen-tamaño{
+    width: 50px;
+    height: 50px;
+}
+.nombre-usuario {
+  margin-top: 15px;
+  font-size: 20px;
+}
+.selec-confi{
+  height: 25px;
+  width: 75px;
+  margin: 5px;
+  font-size: 10px;
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+#mostrar-modal, #confirm-eliminar, #publicar {
+  border: none;
+  height: 35px;
+  padding: 5px;
+  font-size: 18px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: all 100ms ease;
+}
+#mostrar-modal, #confirm-eliminar {
+margin-left: 30%;
+background: #f3ad7e;
+color: #f2f2f2;
+
+}
+
+.btn-edit {
+  border: none;
+  height: 30px;
+  padding: 4px;
+  font-size: 15px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: all 100ms ease;
+  margin-left: 80%;
+  background: #EF5A5A;
+  color: #f2f2f2;
+  margin-bottom: 2px; 
+ }
+
+ .emoji-post{
+  width: 25px;
+  height: 25px;
 }
