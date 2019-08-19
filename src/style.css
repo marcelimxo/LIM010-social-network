@@ -2,32 +2,11 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
+  margin: 0 auto;
   font-family: "Montserrat", sans-serif;
   background-color: #fbfafa;
 }
 
-.flow {
-  flex-flow: nowrap row;
-}
-
-.register-img {
-  width: 26%;
-}
-
-.border-none {
-  border: none;
-}
-.inline-flex {
-  display: inline-flex;
-}
-
-.auto {
-  margin: auto;
-}
-.font-size {
-  font-size: 13px;
-}
 .text-color {
   color: #772d8b;
 }
@@ -50,37 +29,47 @@
 .container-post {
   background-color: #efefef75;
 }
+.content {
+  border-style: ridge;
+  width: 50%;
+  height: 80%;
+}
+.input-post {
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+}
+
+h5 {
+  background-color: #f5f6f7;
+  border-bottom: 1px solid #dddfe2;
+  border-radius: 2px 2px 0 0;
+  font-weight: bold;
+  padding: 8px 6px;
+  margin: 0px;
+}
+
 .container {
+  height: -webkit-fill-available;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   width: auto;
   text-align: center;
 }
-.margin-right-auto {
-  margin-right: auto;
-}
-
-.home-button {
-  margin-top: 50px;
-  margin-left: auto;
-  width: max-content;
-}
-
-.home-img {
-  width: 30%;
-}
 
 .main-img {
-  width: 50%;
-  margin:40px;
+  width: 60%;
+  margin: 20px;
 }
-.block {
-  display: block;
-}
-.flex {
-  display: flex;
-}
+
 .inputs {
   margin: auto;
-  margin-top:20px;
+  margin-top: 20px;
   margin-bottom: 40px;
   text-align: center;
   border: 1px solid #e6e6e6;
@@ -91,25 +80,17 @@
   outline: 0px;
 }
 
+.inputs:nth-child(2) {
+  margin-top: 0;
+}
+
+.input-post {
+  height: 10rem;
+  resize: none;
+}
+
 input:focus {
   border: 1px solid #ffdddd;
-}
-
-.menu-button {
-  width: 15%;
-  margin: 12px;
-}
-
-.eighty {
-  width: 80%;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.margin {
-  margin: 20px;
 }
 
 .social-media-img {
@@ -117,7 +98,6 @@ input:focus {
   height: 100%;
   outline: none;
 }
-
 
 .name {
   font-size: 40px;
@@ -141,18 +121,18 @@ input:focus {
   width: fit-content;
   margin: 10px auto;
   outline: 0px;
+  background-color: #d9a9c4;
+  color: #772d8b;
 }
 
 .login-icons {
   margin: 15px auto;
-  
 }
 
-.buttons-icons{
-  height:50px;
-  width:50px;
+.buttons-icons {
+  width: 3rem;
   border: none;
-  outline:none;
+  outline: none;
 }
 
 .header-profile {
@@ -167,253 +147,5 @@ input:focus {
   display: inline-block;
 }
 
-.header-items {
-  color: white;
-  font-size: 30px;
-}
-
-.photo-box {
-  width: 80px;
-  height: 80px;
-  padding: 0;
-}
-
-.img-user {
-  border-radius: 50%;
-  width: 100%;
-}
-
-.name-user {
-  margin: 30px;
-}
-
-.dropdown {
-  width: fit-content;
-}
-
-.dropdown-content {
-  display: none;
-  background-color: #f9f9f9;
-  min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.position {
-  position: absolute;
-}
-
-.dropdown-links {
-  text-decoration: none;
-  margin: 10px;
-  background-color: #f9f9f9;
-}
-.post-border {
-  border: 1px solid #d2d5d6;
-}
-.post {
-  padding: 9px;
-  border-radius: 5px;
-  width: 90%;
-}
-.post-input {
-  height: 90px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-.background-color-img {
-  background-color: #14a3abcc;
-}
-.select {
-  margin-left: auto;
-  margin-bottom: 10px;
-  color: white;
-}
-
-.published-post {
-  width: 90%;
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-.color-post {
-  background-color: #14a3ab00;
-}
-
-.exit-btn {
-  width: 15px;
-  height: 15px;
-  padding: 0;
-}
-.delete-btn {
-  width: 30px;
-  height: 30px;
-  padding: 0;
-}
-.delete-img {
-  width: 100%;
-}
-.first-div-style {
-  color: white;
-  background-color: #00a8b1;
-  align-items: center;
-}
-.padding-ten {
-  padding: 10px;
-}
-.margin-right {
-  margin-right: 20px;
-}
-.input-image {
-  height: 0;
-  overflow: hidden;
-  width: 0;
-}
-.editTextBox {
-  width: 80%;
-  margin: auto;
-}
-.margin-top {
-  margin-top: 10px;
-}
-.bottom {
-  margin-bottom: 10px;
-}
-
-@media (min-width: 762px) {
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: -webkit-fill-available;
-  }
-  .container2 {
-    display: block;
-  }
-  .main-img {
-    width: 90%;
-  }
-  .inputs {
-    width: 50%;
-  }
-  .name {
-    font-size: 30px;
-  }
-  
-  .post {
-    width: 70%;
-  }
-  .published-post {
-    width: 50%;
-  }
-  .big-profile {
-    flex-direction: row;
-    align-items: start;
-  }
-
-  .conten{
-    border-style: ridge;
-     width: 50%;
-     height: 80%
-    }
-    .input-post{
-       width: 100%; 
-       font-size: 20px;
-      text-align: center;
-      border: none;
-    }
-    
-    h5{
-        background-color: #f5f6f7;
-        border-bottom: 1px solid #dddfe2;
-        border-radius: 2px 2px 0 0;
-        font-weight: bold;
-        padding: 8px 6px;
-        margin: 0px;
-    }
-      
-    .imagen-get{
-      display: flex;
-      flex-direction: row;
-   }
-   .fondo-avatar{
-    background-color: #dfdbdb;
-    border-radius: 50%;
-    padding: 10px; 
-    margin-right: 10%;     
-    margin-bottom: 10%; 
-   }
-
-   .imagen-tamaño{
-    width: 50px;
-    height: 50px;
-}
-.nombre-usuario {
-  margin-top: 15px;
-  font-size: 20px;
-}
-.selec-confi{
-  height: 25px;
-  width: 75px;
-  margin: 5px;
-  font-size: 10px;
-}
-
-.modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1; 
-  padding-top: 100px; 
-  left: 0;
-  top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-#mostrar-modal, #confirm-eliminar, #publicar {
-  border: none;
-  height: 35px;
-  padding: 5px;
-  font-size: 18px;
-  border-radius: 5px;
-  box-sizing: border-box;
-  transition: all 100ms ease;
-}
-#mostrar-modal, #confirm-eliminar {
-margin-left: 30%;
-background: #f3ad7e;
-color: #f2f2f2;
-
-}
-
-.btn-edit {
-  border: none;
-  height: 30px;
-  padding: 4px;
-  font-size: 15px;
-  border-radius: 5px;
-  box-sizing: border-box;
-  transition: all 100ms ease;
-  margin-left: 80%;
-  background: #EF5A5A;
-  color: #f2f2f2;
-  margin-bottom: 2px; 
- }
-
- .emoji-post{
-  width: 25px;
-  height: 25px;
+@media (max-width: 762px) {
 }

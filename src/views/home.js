@@ -1,4 +1,3 @@
-/* eslint-disable padded-blocks */
 import { redirect } from '../utils.js';
 import {
   addPost, getPost, editTextPost,
