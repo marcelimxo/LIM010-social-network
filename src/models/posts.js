@@ -12,11 +12,18 @@ const addPost = async (textNewPost, uid) => {
 };
 
 const getPost = () => {
-  firebase.firestore().collection('posts').get().then((onSnapshot) => {
-    onSnapshot.forEach((doc) => {
-      console.log(doc.data());
-    });
-  });
+  const allPosts = [];
+  firebase.firestore().collection('posts').get().then(
+    (onSnapshot) => {
+      onSnapshot.forEach(
+        (doc) => {
+          allPosts.push({ id: doc.id, ...doc.data() });
+        },
+      );
+    },
+  );
+
+  return allPosts;
 };
 
 const editStatusPost = async (uidPost, status) => {
