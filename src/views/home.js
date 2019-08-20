@@ -1,27 +1,68 @@
-import { redirect } from '../utils.js';
-import {
+import { template } from '../utils.js';
+/* import {
   addPost, getPost, editTextPost,
-} from '../models/posts.js';
+} from '../models/posts.js'; */
 
 export default (username) => {
-  const welcomeMsg = `
+  const welcomeMsg = `<nav role="navigation">
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+
+  <div class="xs-hide">
+    <a href="#/profile"> ${username}</a>
+  </div>
+
+  <div class="logo">
+    <h4>Poetik</h4>
+  </div>
+
+  <ul class="nav-links xs-hide">
+    <li>
+      <a href="#/sign-out">
+        <img src="/src/img/logout.png" alt="cerrar sesión" class="sign-out-icon"> Cerrar sesión</a>
+    </li>
+  </ul>
+
+</nav>
+
+<div class="burger-menu" id="menu">
+  <ul>
+    <li>
+      <a href="#/profile"> ${username}</a>
+    </li>
+    <li>
+      <a id="sign-out">
+        <img src="/src/img/logout.png" alt="cerrar sesión" class="sign-out-icon"> Cerrar sesión</a>
+    </li>
+
+  </ul>
+</div>
+
+<div class="home-container">
+
+  <div class="left">
     <p>¡Bienvenidx, ${username}!</p>
-    <button id="sign-out">salir</button>
-    <div  class= "conten">
-      <h5>Crear Post</h5>
-      <textarea  type="text" id = "post-text" placeholder="¿Qué estás pensando?" class="input-post"></textarea>
-      <button id="button-post">PUBLICAR</button>
+  </div>
 
-    </div>`;
-  document.getElementById('root').innerHTML = welcomeMsg;
 
-  const signOutBtn = document.getElementById('sign-out');
-  signOutBtn.addEventListener('click', () => {
-    firebase.auth().signOut().then(() => {
-      redirect('login');
-    });
-  });
-  const btnPost = document.getElementById('button-post');
+  <div class="right">
+
+    <div class="new-post-container">
+
+      <textarea type="text" id="post-text" placeholder="¿Qué quieres compartir?" class="input-post"
+        required></textarea>
+      <button id="button-post" class="buttons btn-post">Compartir</button>
+    </div>
+
+  </div>`;
+  document.getElementById('root').classList.remove('container');
+  template(welcomeMsg);
+
+
+/*   const btnPost = document.getElementById('button-post');
   const addPostOnSubmit = (evt) => {
     evt.preventDefault();
     const { uid } = firebase.auth().currentUser;
@@ -53,7 +94,7 @@ export default (username) => {
     author.className = 'post-name'; // Quitar camel case
     paragraph.className = 'editMode';
     date.className = 'dateString';
-  
+
     // Asignación de texto y clase a botones
     editButton.innerHTML = '<span class="glyphicon glyphicon-pencil"></span> Editar';
     editButton.className = 'edit';
@@ -66,7 +107,7 @@ export default (username) => {
     author.innerHTML = `<span class="glyphicon glyphicon-user"></span> ${creatorString}`;
     paragraph.innerHTML = postString;
     date.innerHTML = `${timeToDate} <hr>`;
-  
+
     // Añadiendo elementos al DOM
     listItem.appendChild(author);
     listItem.appendChild(date);
@@ -78,6 +119,10 @@ export default (username) => {
     listItem.appendChild(numberLikes);
     return listItem;
   };
-  const allPost = async   getPost();
-  await createNewPostElement(allPost[1].content, allPost[1].userName, allPost[1].reactionlike, allPost[1].date);
+
+  const allPost = getPost().then(
+    createNewPostElement(allPost[1].content,
+      allPost[1].userName,
+      allPost[1].reactionlike, allPost[1].date));
+}; */
 };

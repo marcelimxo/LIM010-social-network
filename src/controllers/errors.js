@@ -1,5 +1,6 @@
 export default (code) => {
-  const errorContainer = document.getElementById('error');
+  const errorInnerText = document.getElementById('error');
+  const errorContainer = document.getElementById('error-container');
   let errorMessage;
   switch (code) {
     // errores de auth -* creando usuario *-
@@ -32,5 +33,5 @@ export default (code) => {
       break;
   }
   errorContainer.classList.add('error');
-  errorContainer.innerHTML = errorMessage;
+  errorInnerText.innerHTML = errorMessage;
 };

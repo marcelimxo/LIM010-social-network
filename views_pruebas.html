@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +8,70 @@
   <title>pruebas</title>
   <link rel="stylesheet" href="/src/style.css">
 </head>
+
 <body>
-  
-  <div id="root" class="container">
-   
-    <div class="home-container">
-        <div class="content">
-            <p>¡Bienvenidx, ${username}!</p>
-            <button id="sign-out">salir</button>
-        </div>
-        <div  class= "content">
-          <h5>Crear Post</h5>
-          <textarea  type="text" id = "post-text" placeholder="¿Qué estás pensando?" class="input-post" required></textarea>
-          <button id="button-post">PUBLICAR</button>
-    
-        </div>
+
+  <div id="root">
+
+
+    <nav role="navigation">
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+
+      <div class="xs-hide">
+        <a href="#/profile"> ${username}</a>
+      </div>
+
+      <div class="logo">
+        <h4>Poetik</h4>
+      </div>
+
+      <ul class="nav-links xs-hide">
+        <li>
+          <a href="#/sign-out">
+            <img src="/src/img/logout.png" alt="cerrar sesión" class="sign-out-icon"> Cerrar sesión</a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <div class="burger-menu" id="menu">
+      <ul>
+        <li>
+          <a href="#/profile"> ${username}</a>
+        </li>
+        <li>
+          <a href="#/sign-out">
+            <img src="/src/img/logout.png" alt="cerrar sesión" class="sign-out-icon"> Cerrar sesión</a>
+        </li>
+
+      </ul>
     </div>
 
-  </div>
+    <div class="home-container">
+
+      <div class="left">
+        <p>¡Bienvenidx, ${username}!</p>
+      </div>
+
+
+      <div class="right">
+
+        <div class="new-post-container">
+
+          <textarea type="text" id="post-text" placeholder="¿Qué quieres compartir?" class="input-post"
+            required></textarea>
+          <button id="button-post" class="buttons btn-post">Compartir</button>
+        </div>
+
+      </div>
+
+
+    </div>
 
 </body>
+
 </html>

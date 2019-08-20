@@ -21,6 +21,12 @@ export default () => {
       case '/home':
         next = homeController;
         break;
+
+      case '/sign-out':
+        firebase.auth().signOut().then(() => {
+          redirect('login');
+        });
+        break;
       case '':
         redirect('home');
         return;
