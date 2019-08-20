@@ -1,7 +1,7 @@
 import { template } from '../utils.js';
-/* import {
-  addPost, getPost, editTextPost,
-} from '../models/posts.js'; */
+import {
+  addPost /* , getPost, editTextPost */,
+} from '../models/posts.js';
 
 export default (username) => {
   const welcomeMsg = `<nav role="navigation">
@@ -62,7 +62,7 @@ export default (username) => {
   template(welcomeMsg);
 
 
-/*   const btnPost = document.getElementById('button-post');
+  const btnPost = document.getElementById('button-post');
   const addPostOnSubmit = (evt) => {
     evt.preventDefault();
     const { uid } = firebase.auth().currentUser;
@@ -74,7 +74,11 @@ export default (username) => {
       }
     });
   };
+
   btnPost.addEventListener('click', addPostOnSubmit);
+
+  /*
+
   const createNewPostElement = (postString, creatorString, showLikes, datePost) => {
     // Crea los elementos que aparecen en el DOM
     const listItem = document.createElement('div');
