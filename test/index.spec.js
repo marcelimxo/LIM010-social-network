@@ -1,5 +1,3 @@
-
-
 // importamos la funcion que vamos a testear
 import {
   login, registerWithEmail, registerUserGoogle,
