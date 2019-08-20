@@ -121,6 +121,12 @@ input:focus {
 
 /* Estilos del home */
 
+.body-home{
+
+  background-image: url('/src/img/background-home.png')
+
+}
+
 .home-container {
   display: flex;
   flex-flow: row nowrap;
@@ -182,7 +188,8 @@ nav {
   font-size: 14px;
   padding: 0;
 }
-.burger, .burger-menu {
+.burger,
+.burger-menu {
   display: none;
 }
 
@@ -203,24 +210,63 @@ nav {
   width: 100%;
   justify-content: flex-end;
   flex-flow: wrap;
+  background-color: #f2c57c2b;
 }
 
 .btn-post {
   margin: 10px 0;
+  padding: 10px;
+  font-size: 1.03rem;
 }
 
-.container-post {
-  background-color: #c6c5b9;
-}
-
-.input-post {
+.post {
   width: 100%;
   font-size: 20px;
-  text-align: center;
   border: none;
   height: 10rem;
   outline: none;
   resize: none;
+  padding: 20px;
+}
+
+.post:focus {
+  outline-offset: -2px;
+  outline: #e27f94 auto 1px;
+}
+
+.post-container {
+  margin: 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  flex-flow: wrap;
+}
+
+.post-header {
+  background-color: #d9a9c4;
+  width: 100%;
+  text-align: center;
+  height: 3rem;
+  padding: 15px;
+}
+
+.post-footer {
+  background-color: #efdce7;
+  width: 100%;
+  text-align: center;
+}
+
+.post:disabled {
+  background-color: #fff;
+  color: #353a47;
+}
+
+.btn-likes {
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #cbf27c;
 }
 
 @media (max-width: 768px) {
