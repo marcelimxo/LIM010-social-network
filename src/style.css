@@ -121,10 +121,8 @@ input:focus {
 
 /* Estilos del home */
 
-.body-home{
-
-  background-image: url('/src/img/background-home.png')
-
+.body-home {
+  background-image: url("/src/img/background-home.png");
 }
 
 .home-container {
@@ -148,6 +146,18 @@ input:focus {
   padding: 1rem;
 }
 
+.user-info {
+  display: flex;
+}
+
+.user-img img {
+  border-radius: 50%;
+}
+
+.user-info p {
+  margin: 15px;
+}
+
 /* Nav */
 .sign-out-icon {
   width: 3rem;
@@ -158,17 +168,18 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 8vh;
-  background-color: #c6c5b9;
+  background-color: #c6c5b930;
   padding: 0 5rem;
 }
 
 .logo {
-  color: #772d8b;
-  letter-spacing: 5px;
-  font-size: 20px;
   flex-grow: 1;
   justify-content: center;
   display: flex;
+}
+
+.logo img {
+  width: 7rem;
 }
 
 .nav-links li {
