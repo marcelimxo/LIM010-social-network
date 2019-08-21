@@ -65,7 +65,6 @@ export default (username) => {
   const btnPost = document.getElementById('button-post');
   const addPostOnSubmit = (evt) => {
     evt.preventDefault();
-    const { uid } = firebase.auth().currentUser;
     firebase.auth().onAuthStateChanged(() => {
       if (uid) {
         const inputText = document.getElementById('post-text');
@@ -102,7 +101,6 @@ export default (username) => {
 </div>`;
     return (contentPost);
   };
-  
   const showPost = async () => {
     const arr = await getPost();
     // console.log(arr[2]);
