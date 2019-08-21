@@ -8,8 +8,9 @@ import {
 const firebasemock = require('firebase-mock');
 
 const mockauth = new firebasemock.MockFirebase();
-const mockfirestore = new firebasemock.MockFirestore();
-mockfirestore.autoFlush();
+const mockdatabase = new firebasemock.MockFirebase();
+// const mockfirestore = new firebasemock.MockFirestore();
+// mockfirestore.autoFlush();
 mockauth.autoFlush();
 
 global.firebase = firebasemock.MockFirebaseSdk(
@@ -17,7 +18,7 @@ global.firebase = firebasemock.MockFirebaseSdk(
   // eslint-disable-next-line no-undef
   path => (path ? mockdatabase.child(path) : null),
   () => mockauth,
-  () => mockfirestore,
+  // () => mockfirestore,
 );
 
 // iniciando tests
