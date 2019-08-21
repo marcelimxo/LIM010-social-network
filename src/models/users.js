@@ -12,7 +12,7 @@ const login = async (email, password) => {
   try {
     await firebase.auth().signInWithEmailAndPassword(email, password);
 
-    return { error: false };
+    return { error: false, email };
   } catch (error) {
     return { error: true, code: error.code };
   }
