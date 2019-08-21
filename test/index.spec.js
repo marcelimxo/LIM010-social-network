@@ -43,6 +43,15 @@ describe('registerWithEmail', () => {
   it('debería ser una función', () => {
     expect(typeof registerWithEmail).toBe('function');
   });
+
+
+  it('debería registrar un usuario con el correo "ruth@gmail.com" y la contraseña "ruth1234"', () => registerWithEmail('ruth@gmail.com', 'ruth123456789').then((user) => {
+    expect(user.error).toBe(false);
+  }));
+
+  it('debería dar error al intentar registrar un usuario sin contraseña', () => registerWithEmail('ruth@gmail.com', '').catch((user) => {
+    expect(user.error).toBe(true);
+  }));
 });
 
 describe('registerUserGoogle', () => {
