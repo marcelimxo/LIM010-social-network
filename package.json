@@ -14,7 +14,7 @@
     "eslint": "eslint --ext .js src/ test/",
     "stylelint": "stylelint --aei src/**/*.css",
     "lint": "npm run eslint && npm run htmlhint && npm run stylelint",
-    "test": "jest",
+    "test": "jest --coverage",
     "test:coverage": "jest --coverage",
     "pretest": "npm run lint"
   },
