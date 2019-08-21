@@ -11,12 +11,12 @@ const addUserToFirestore = async (email, name, authId) => {
 const login = async (email, password) => {
   try {
     await firebase.auth().signInWithEmailAndPassword(email, password);
-
     return { error: false };
   } catch (error) {
     return { error: true, code: error.code };
   }
 };
+
 
 const registerWithEmail = async (email, password) => {
   try {

@@ -9,17 +9,20 @@ const firebasemock = require('firebase-mock');
 
 const mockauth = new firebasemock.MockFirebase();
 const mockdatabase = new firebasemock.MockFirebase();
-// const mockfirestore = new firebasemock.MockFirestore();
-// mockfirestore.autoFlush();
-mockauth.autoFlush();
+const mockfirestore = new firebasemock.MockFirestore();
 
-global.firebase = firebasemock.MockFirebaseSdk(
-  // use null if your code does not use RTDB
-  // eslint-disable-next-line no-undef
-  path => (path ? mockdatabase.child(path) : null),
-  () => mockauth,
-  // () => mockfirestore,
-);
+
+beforeEach(() => {
+  mockfirestore.autoFlush();
+  mockauth.autoFlush();
+  global.firebase = firebasemock.MockFirebaseSdk(
+    // use null if your code does not use RTDB
+    // eslint-disable-next-line no-undef
+    path => (path ? mockdatabase.child(path) : null),
+    () => mockauth,
+    () => mockfirestore,
+  );
+});
 
 // iniciando tests
 describe('login', () => {
@@ -27,9 +30,12 @@ describe('login', () => {
     expect(typeof login).toBe('function');
   });
 
-
   it('debería logguearse con el email "diego@gmail.com" y la contraseña "diego1234"', () => login('diego@gmail.com', 'diego1234').then((user) => {
-    expect(user.email).toEqual('diego@gmail.com');
+    expect(user.error).toBe(false);
+  }));
+
+  it('debería dar error al intentar loguearse sin email', () => login('', '1234').catch((user) => {
+    expect(user.error).toBe(true);
   }));
 });
 
