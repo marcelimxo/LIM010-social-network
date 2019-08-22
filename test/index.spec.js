@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 // importamos la funcion que vamos a testear
 import {
   login, registerWithEmail, registerUserGoogle,
@@ -30,13 +31,31 @@ describe('login', () => {
     expect(typeof login).toBe('function');
   });
 
-  it('debería logguearse con el email "diego@gmail.com" y la contraseña "diego1234"', () => login('diego@gmail.com', 'diego1234').then((user) => {
-    expect(user.error).toBe(false);
-  }));
+  it('deberia retornar un objeto', () => {
+    expect(typeof login()).toBe('object');
+  });
 
-  it('debería dar error al intentar loguearse sin email', () => login('', '1234').catch((user) => {
-    expect(user.error).toBe(true);
-  }));
+  it('deberia resolver un objeto cuando sea exito', () => {
+    login()
+      .then((obj) => {
+        expect(typeof obj).toBe('object');
+      });
+  });
+
+  it('debería logguearse con el email "diego@gmail.com" y la contraseña "diego1234"', () => login('diego@gmail.com', 'diego1234')
+    .then((user) => {
+      expect(user.error).toBe(false);
+    }));
+
+    it('deberia resolver un objeto cuando sea fallido', () => login('', '1234')
+    .catch((obj) => {
+      expect(typeof obj).toBe('object');
+    }));
+
+  it('debería dar error al intentar loguearse sin email', () => login('', '1234')
+    .catch((user) => {
+      expect(user.error).toBe(true);
+    }));
 });
 
 describe('registerWithEmail', () => {
@@ -44,6 +63,16 @@ describe('registerWithEmail', () => {
     expect(typeof registerWithEmail).toBe('function');
   });
 
+  it('deberia retornar un objeto', () => {
+    expect(typeof registerWithEmail()).toBe('object');
+  });
+
+  it('deberia resolver un objeto cuando sea exito', () => {
+    registerWithEmail()
+      .then((obj) => {
+        expect(typeof obj).toBe('object');
+      });
+  });
 
   it('debería registrar un usuario con el correo "ruth@gmail.com" y la contraseña "ruth1234"', () => registerWithEmail('ruth@gmail.com', 'ruth123456789').catch((user) => {
     expect(user.error).toBe(false);
@@ -59,6 +88,17 @@ describe('registerUserGoogle', () => {
     expect(typeof registerUserGoogle).toBe('function');
   });
 
+  it('deberia retornar un objeto', () => {
+    expect(typeof registerUserGoogle()).toBe('object');
+  });
+
+  it('deberia resolver un objeto cuando sea exito', () => {
+    registerUserGoogle()
+      .then((obj) => {
+        expect(typeof obj).toBe('object');
+      });
+  });
+
   it('debería loggear al usuario con cuenta de google abierta', () => {
     registerUserGoogle().then((user) => {
       expect(user.error).toBe(false);
@@ -69,6 +109,17 @@ describe('registerUserGoogle', () => {
 describe('registerUserFacebook', () => {
   it('debería ser una función', () => {
     expect(typeof registerUserFacebook).toBe('function');
+  });
+
+  it('deberia retornar un objeto', () => {
+    expect(typeof registerUserFacebook()).toBe('object');
+  });
+
+  it('deberia resolver un objeto cuando sea exito', () => {
+    registerUserFacebook()
+      .then((obj) => {
+        expect(typeof obj).toBe('object');
+      });
   });
 
   it('debería loggear al usuario con cuenta de facebook abierta', () => {
@@ -90,6 +141,17 @@ describe('getUserInfo', () => {
     expect(typeof getUserInfo).toBe('function');
   });
 
+  it('deberia retornar un objeto', () => {
+    expect(typeof getUserInfo()).toBe('object');
+  });
+
+  it('deberia resolver un objeto cuando sea exito', () => {
+    getUserInfo()
+      .then((obj) => {
+        expect(typeof obj).toBe('object');
+      });
+  });
+
   it('debería obtener la información del usuario con el UID: eBALQd2XkAeZDNG8xbkN7qAZXOp1', () => {
     getUserInfo('eBALQd2XkAeZDNG8xbkN7qAZXOp1').then((user) => {
       expect(user.error).toBe(false);
@@ -106,6 +168,17 @@ describe('getUserInfo', () => {
 describe('addUserToFirestore', () => {
   it('debería ser una función', () => {
     expect(typeof addUserToFirestore).toBe('function');
+  });
+
+  it('deberia retornar un objeto', () => {
+    expect(typeof addUserToFirestore()).toBe('object');
+  });
+
+  it('deberia resolver un objeto cuando sea exito', () => {
+    addUserToFirestore()
+      .then((obj) => {
+        expect(typeof obj).toBe('object');
+      });
   });
 
   it('debería agregar un usuario con el ID:OyD3aCHLBoTkb66zK0zEZwWJ6MF2, el correo: pepi@gmail.com y el nombre: Pepi a la base de datos', () => {

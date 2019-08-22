@@ -278,6 +278,12 @@ nav {
   padding: 10px;
   border-radius: 50%;
   background-color: #cbf27c;
+  fill: #353a47;
+}
+
+.btn-likes:hover {
+  background-color: hsla(80, 82%, 63%, 1);
+  fill: #000000;
 }
 
 @media (max-width: 768px) {
