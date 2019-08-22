@@ -38,4 +38,5 @@ export default () => {
 
   template(loginPage);
   document.getElementById('root').classList.add('container');
+  document.getElementById('body').classList.remove('body-home');
 };

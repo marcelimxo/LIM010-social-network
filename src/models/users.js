@@ -1,13 +1,3 @@
-/* eslint-disable prefer-arrow-callback */
-
-const addUserToFirestore = async (email, name, authId) => {
-  await firebase.firestore().collection('users').doc(`${authId}`).set({
-    email, name,
-  });
-
-  // console.log('Document written with ID: ', authId);
-};
-
 const login = async (email, password) => {
   try {
     await firebase.auth().signInWithEmailAndPassword(email, password);
@@ -33,13 +23,11 @@ const registerUserGoogle = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     const popup = await firebase.auth().signInWithPopup(provider);
 
-    const email = await popup.additionalUserInfo.profile.email;
-    const name = await popup.additionalUserInfo.profile.name;
-
-    const { user: { uid } } = await popup;
-
     return {
-      error: false, uid, email, name,
+      error: false,
+      uid: popup.user.uid,
+      email: popup.additionalUserInfo.profile.email,
+      name: popup.additionalUserInfo.profile.name,
     };
   } catch (error) {
     return { error: true, code: error.code };
@@ -51,13 +39,11 @@ const registerUserFacebook = async () => {
     const provider = new firebase.auth.FacebookAuthProvider();
     const popup = await firebase.auth().signInWithPopup(provider);
 
-    const email = await popup.additionalUserInfo.profile.email;
-    const name = await popup.additionalUserInfo.profile.name;
-
-    const { user: { uid } } = await popup;
-
     return {
-      error: false, uid, email, name,
+      error: false,
+      uid: popup.user.uid,
+      email: popup.additionalUserInfo.profile.email,
+      name: popup.additionalUserInfo.profile.name,
     };
   } catch (error) {
     return { error: true, code: error.code };
@@ -73,6 +59,12 @@ const getUserInfo = async (uid) => {
   } catch (error) {
     return { error: true, code: error.code };
   }
+};
+
+const addUserToFirestore = async (email, name, authId) => {
+  await firebase.firestore().collection('users').doc(`${authId}`).set({
+    email, name,
+  });
 };
 
 
