@@ -53,13 +53,15 @@ export default (username) => {
   </div>
 
 
-  <div class="right" id="right">
+  <div class="right">
 
     <div class="new-post-container">
 
       <textarea type="text" id="post-text" class="post" placeholder="¿Qué quieres compartir?" required></textarea>
       <button id="button-post" class="buttons btn-post">Compartir</button>
     </div>
+
+    <div id="post"></div>
 
   </div>
 
@@ -70,16 +72,18 @@ export default (username) => {
 
   template(homePage);
 
-  const post = document.getElementById('right');
+  const post = document.getElementById('post');
   const showPost = (doc, id) => {
     post.innerHTML += `
-    <div class="post-container" id="container">
+    <div class="post-container">
           <div class="post-header">
-            <span class="post-user">${doc.nameUser}</span>
-            <span class="post-title">aqui deberia ir el title</span>
-            <button class="buttons btn-delete-post" id="${id}" data-user-id=${id} ><img src="/src/img/delete.png" alt="Borrar post"></button>
+            <div class="post-author-title">
+                <span class="post-user">${doc.nameUser}</span> - 
+                <span class="post-title">hola</span>
+            </div>
+            <button class="buttons btn-delete-post" id="${id}"><img src="/src/img/delete.png" alt="Borrar post"></button>
           </div>
-          <textarea type="text" class="post" disabled>${doc.content}</textarea>
+          <textarea type="text" id="text${id}" class="post" disabled>${doc.content}</textarea>
           <div class="post-footer">
             <button id="like${id}" class="buttons btn-likes">
 
@@ -92,8 +96,9 @@ export default (username) => {
               </svg>
 
             </button>
+            <span class="post-likes-count">10</span>
           </div>
-        </div>`;
+          </div>`;
   };
 
   getPost(showPost);
