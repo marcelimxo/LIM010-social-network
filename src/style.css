@@ -265,27 +265,12 @@ nav {
   align-items: center;
 }
 
-.post-footer {
-  background-color: #efdce7;
-  width: 100%;
-  text-align: center;
+.post-user {
+  font-weight: 500;
 }
 
-.post:disabled {
-  background-color: #fff;
-  color: #353a47;
-}
-
-.btn-likes {
-  padding: 10px;
-  border-radius: 50%;
-  background-color: #cbf27c;
-  fill: #353a47;
-}
-
-.btn-likes:hover {
-  background-color: hsla(80, 82%, 63%, 1);
-  fill: #000000;
+.post-title {
+  font-style: italic;
 }
 
 .btn-delete-post {
@@ -300,6 +285,38 @@ nav {
 .btn-delete-post:hover {
   background-color: rgba(255, 0, 0, 0.46);
 }
+
+.post-footer {
+  background-color: #efdce7;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.post:disabled {
+  background-color: #fff;
+  color: #353a47;
+}
+
+.btn-likes {
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #cbf27c;
+  fill: #353a47;
+  margin: 5px;
+}
+
+.post-likes-count {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.btn-likes:hover {
+  background-color: hsla(80, 82%, 63%, 1);
+  fill: #000000;
+}
+
 
 @media (max-width: 768px) {
   nav {
