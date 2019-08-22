@@ -1,6 +1,6 @@
 import homePage from '../views/home.js';
 import { getUserInfo } from '../models/users.js';
-import { addPost } from '../models/posts.js';
+import { addPost, deletePost } from '../models/posts.js';
 
 export default async () => {
   const { uid } = await firebase.auth().currentUser;

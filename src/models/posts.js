@@ -10,16 +10,13 @@ const addPost = async (textNewPost, uid) => {
       reactionlike: 0,
     });
 };
-const post = document.getElementById('all');
 
 const getPost = (callback) => {
   firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
-    post.innerHTML = '';
     querySnapshot.forEach((doc) => {
       callback(doc.data(), doc.id);
     });
   });
-  
 };
 
 const editStatusPost = async (uidPost, status) => {
@@ -35,7 +32,7 @@ const editTextPost = async (uidPost, text) => {
 };
 
 const deletePost = async (uidPost) => {
-  firebase.firestore().collection('posts').doc(`${uidPost}`).delete();
+  await firebase.firestore().collection('posts').doc(`${uidPost}`).delete();
   console.log('eliminado');
 };
 
