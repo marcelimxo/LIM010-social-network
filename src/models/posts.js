@@ -10,19 +10,16 @@ const addPost = async (textNewPost, uid) => {
       reactionlike: 0,
     });
 };
+const post = document.getElementById('all');
 
-const getPost = async () => {
-  const allPosts = [];
-  await firebase.firestore().collection('posts').get().then(
-    (onSnapshot) => {
-      onSnapshot.forEach(
-        (doc) => {
-          allPosts.push({ id: doc.id, ...doc.data() });
-        },
-      );
-    },
-  );
-  return allPosts;
+const getPost = (callback) => {
+  firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
+    post.innerHTML = '';
+    querySnapshot.forEach((doc) => {
+      callback(doc.data(), doc.id);
+    });
+  });
+  
 };
 
 const editStatusPost = async (uidPost, status) => {
