@@ -75,8 +75,10 @@
 
         <div class="post-container">
           <div class="post-header">
-            <span class="post-user">${username}</span>
-            <span class="post-title">${title}</span>
+            <div class="post-author-title">
+                <span class="post-user">${username}</span> - 
+                <span class="post-title">${title}</span>
+            </div>
             <button class="buttons btn-delete-post"><img src="/src/img/delete.png" alt="Borrar post"></button>
           </div>
           <textarea type="text" id="${postId}" class="post" disabled>hola hola</textarea>
@@ -92,6 +94,7 @@
               </svg>
 
             </button>
+            <span class="post-likes-count">10</span>
           </div>
         </div>
 
