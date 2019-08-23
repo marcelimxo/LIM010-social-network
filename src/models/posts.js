@@ -2,7 +2,7 @@ const addPost = async (textNewPost, uid) => {
   const gettingInfo = await firebase.firestore().collection('users').doc(`${uid}`).get();
   firebase.firestore().collection('posts')
     .add({
-      UidUser: uid,
+      uid,
       date: firebase.firestore.FieldValue.serverTimestamp(),
       content: textNewPost,
       nameUser: gettingInfo.data().name,
@@ -12,10 +12,12 @@ const addPost = async (textNewPost, uid) => {
 };
 
 const getPost = (callback) => {
+  const arr = [];
   firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      callback(doc.data(), doc.id);
+      arr.push({ data: doc.data(), idpost: doc.id });
     });
+    callback(arr);
   });
 };
 
