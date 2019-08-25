@@ -7,5 +7,10 @@ const template = (view) => {
   root.innerHTML = view;
 };
 
+const templatePost = (view) => {
+  const post = document.getElementById('post');
+  post.appendChild(view);
+};
 
-export { redirect, template };
+
+export { redirect, template, templatePost };

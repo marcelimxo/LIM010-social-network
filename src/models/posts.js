@@ -2,7 +2,7 @@ const addPost = async (textNewPost, uid) => {
   const gettingInfo = await firebase.firestore().collection('users').doc(`${uid}`).get();
   firebase.firestore().collection('posts')
     .add({
-      UidUser: uid,
+      uid,
       date: firebase.firestore.FieldValue.serverTimestamp(),
       content: textNewPost,
       nameUser: gettingInfo.data().name,
@@ -11,18 +11,14 @@ const addPost = async (textNewPost, uid) => {
     });
 };
 
-const getPost = async () => {
-  const allPosts = [];
-  await firebase.firestore().collection('posts').get().then(
-    (onSnapshot) => {
-      onSnapshot.forEach(
-        (doc) => {
-          allPosts.push({ id: doc.id, ...doc.data() });
-        },
-      );
-    },
-  );
-  return allPosts;
+const getPost = (callback) => {
+  const arr = [];
+  firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      arr.push({ data: doc.data(), idpost: doc.id });
+    });
+    callback(arr);
+  });
 };
 
 const editStatusPost = async (uidPost, status) => {
@@ -38,7 +34,7 @@ const editTextPost = async (uidPost, text) => {
 };
 
 const deletePost = async (uidPost) => {
-  firebase.firestore().collection('posts').doc(`${uidPost}`).delete();
+  await firebase.firestore().collection('posts').doc(`${uidPost}`).delete();
   console.log('eliminado');
 };
 
