@@ -67,8 +67,11 @@ const addUserToFirestore = async (email, name, authId) => {
   });
 };
 
+const addUserPhotoToStorage = (photo) => {
+  firebase.storage().ref(`avatars/${photo}`);
+};
 
 export {
   login, registerWithEmail, registerUserGoogle,
-  registerUserFacebook, addUserToFirestore, getUserInfo,
+  registerUserFacebook, addUserToFirestore, getUserInfo, addUserPhotoToStorage,
 };

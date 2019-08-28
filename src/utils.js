@@ -9,7 +9,7 @@ const template = (view) => {
 
 const templatePost = (view) => {
   const post = document.getElementById('post');
-  post.appendChild(view);
+  post.prepend(view);
 };
 
 

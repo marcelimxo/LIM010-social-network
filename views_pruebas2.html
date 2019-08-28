@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/src/style.css">
+  <title>profile</title>
+</head>
+
+<body class="body-home">
+
+  <div id="root">
+
+
+    <nav role="navigation">
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+
+      <div class="xs-hide">
+        <a href="#/profile"> ${username}</a>
+      </div>
+
+      <div class="logo">
+        <img src="/src/img/poetik-logo.png" alt="Poetik">
+      </div>
+
+      <ul class="nav-links xs-hide">
+        <li>
+          <a href="#/sign-out">
+            <img src="/src/img/logout.png" alt="cerrar sesión" class="sign-out-icon"> Cerrar sesión</a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <div class="burger-menu" id="menu">
+      <ul>
+        <li>
+          <a href="#/profile"> ${username}</a>
+        </li>
+        <li>
+          <a href="#/sign-out">
+            <img src="/src/img/logout.png" alt="cerrar sesión" class="sign-out-icon"> Cerrar sesión</a>
+        </li>
+
+      </ul>
+    </div>
+
+    <div id="profile-container" class="container">
+
+      <div class="profile-user-avatar">
+        <div class="user-img">
+          <img src="https://placekitten.com/100/100" alt="User picture">
+        </div>
+        <div class="user-img-info">
+          <p>${username}</p>
+          <p>user@user.com</p>
+          <p>Avatar por: <a href="https://placekitten.com">placekitten.com</a>. O sube el propio...</p>
+          <progress value="0" max="100" id="uploader">0%</progress>
+          <input type="file" name="avatar" id="avatar-uploader" value="avatar">
+        </div>
+      </div>
+
+      <form id="profile-info">
+        <div class="profile-form-group">
+          <label for="Name">Nombre:</label>
+          <div class="profile-inputs">
+            <input type="text" value="Nombre" name="Name">
+          </div>
+        </div>
+        <div class="profile-form-group">
+          <label for="Email" class="profile-form-label">Email:</label>
+          <div class="profile-inputs">
+            <input type="email" name="Email" value="${user.email}" disabled>
+          </div>
+        </div>
+        <div class="profile-form-group">
+          <label for="password">Contraseña:</label>
+
+          <div class="profile-inputs">
+            <input type="password" name="Password" id="password" value="123456789">
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</body>
+
+</html>

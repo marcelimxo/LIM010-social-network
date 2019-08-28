@@ -213,8 +213,12 @@ nav {
 
 /* Post */
 
-.posts-container{
+.posts-container {
   width: 100%;
+}
+
+div#post {
+  margin: 0;
 }
 
 .new-post-container {
@@ -226,6 +230,10 @@ nav {
   justify-content: flex-end;
   flex-flow: wrap;
   background-color: #f2c57c2b;
+}
+
+.post-error {
+  border: 2px solid #ff0000b3 !important;
 }
 
 .btn-post {
@@ -273,14 +281,16 @@ nav {
   font-weight: 500;
 }
 
-.post-title {
-  font-style: italic;
+.post-date {
+  color: #353a4791;
+  font-size: 14px;
+  margin-right: 10px;
 }
 
 .btn-delete-post {
   border-radius: 50%;
   margin: 0px;
-  background-image: url('/src/img/delete.png');
+  background-image: url("/src/img/delete.png");
   background-repeat: no-repeat;
   background-position: center;
   background-color: #ff070726;
@@ -291,6 +301,22 @@ nav {
 
 .btn-delete-post:hover {
   background-color: rgba(255, 0, 0, 0.46);
+}
+
+.btn-edit-post {
+  border-radius: 50%;
+  margin: 0px 10px 0px 0px;
+  background-image: url(/src/img/edit.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #ff98004a;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0px;
+}
+
+.btn-edit-post:hover {
+  background-color: #ff9800a6;
 }
 
 .post-footer {
@@ -324,6 +350,50 @@ nav {
   fill: #000000;
 }
 
+/* Profile */
+
+.profile-user-avatar {
+  display: flex;
+  text-align: justify;
+  justify-content: space-around;
+  width: 50%;
+  border-bottom: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+.profile-inputs input {
+  text-align: center;
+  border: 1px solid #e6e6e6;
+  border-radius: 20px;
+  height: 43px;
+  padding: 9px 0 7px 8px;
+  outline: 0px;
+  width: 20rem;
+}
+
+.profile-inputs {
+  display: inline-flex;
+  margin: 0.4rem 2rem;
+}
+
+.profile-form-group {
+  display: flex;
+  align-items: center;
+}
+
+.user-img-info {
+  padding-bottom: 10px;
+}
+
+#profile-container {
+  flex-flow: column;
+}
+
+progress#uploader {
+  width: 100%;
+  -webkit-appearance: none;
+  margin: 10px 0;
+}
 
 @media (max-width: 768px) {
   nav {

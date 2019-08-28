@@ -1,9 +1,11 @@
+let arr = [];
+
 const addPost = async (textNewPost, uid) => {
   const gettingInfo = await firebase.firestore().collection('users').doc(`${uid}`).get();
   firebase.firestore().collection('posts')
     .add({
       uid,
-      date: firebase.firestore.FieldValue.serverTimestamp(),
+      date: new Date(),
       content: textNewPost,
       nameUser: gettingInfo.data().name,
       public: true,
@@ -12,10 +14,14 @@ const addPost = async (textNewPost, uid) => {
 };
 
 const getPost = (callback) => {
-  const arr = [];
-  firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      arr.push({ data: doc.data(), idpost: doc.id });
+  firebase.firestore().collection('posts').orderBy('date', 'asc').onSnapshot({ includeMetadataChanges: false }, (querySnapshot) => {
+    querySnapshot.docChanges().forEach(({ type, doc }) => {
+      if (type === 'removed') {
+        arr = arr.filter(({ idpost }) => idpost !== doc.id);
+      }
+      if (type === 'added') {
+        arr.push({ data: doc.data(), idpost: doc.id });
+      }
     });
     callback(arr);
   });
@@ -27,18 +33,33 @@ const editStatusPost = async (uidPost, status) => {
   });
 };
 
-const editTextPost = async (uidPost, text) => {
-  await firebase.firestore().collection('posts').doc(`${uidPost}`).update({
+const editTextPost = async (uid, text) => {
+  await firebase.firestore().collection('posts').doc(`${uid}`).update({
     content: text,
   });
+
+  const gettingInfo = await firebase.firestore().collection('posts').doc(`${uid}`).get();
+  const postTextContent = gettingInfo.data().content;
+
+  return postTextContent;
 };
 
-const deletePost = async (uidPost) => {
-  await firebase.firestore().collection('posts').doc(`${uidPost}`).delete();
-  console.log('eliminado');
+const deletePost = async (uid) => {
+  await firebase.firestore().collection('posts').doc(`${uid}`).delete();
+};
+
+const addLikes = async (uid) => {
+  await firebase.firestore().collection('posts').doc(`${uid}`).update({
+    reactionlike: firebase.firestore.FieldValue.increment(1),
+  });
+
+  const gettingInfo = await firebase.firestore().collection('posts').doc(`${uid}`).get();
+  const likeCount = gettingInfo.data().reactionlike;
+
+  return likeCount;
 };
 
 
 export {
-  getPost, editStatusPost, addPost, editTextPost, deletePost,
+  getPost, editStatusPost, addPost, editTextPost, deletePost, addLikes,
 };

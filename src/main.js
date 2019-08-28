@@ -10,6 +10,7 @@ const firebaseConfig = {
   storageBucket: 'poetik-1d0bc.appspot.com',
   messagingSenderId: '85143804945',
   appId: '1:85143804945:web:c774288a12be0a1f',
+
 };
 
 firebase.initializeApp(firebaseConfig);

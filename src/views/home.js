@@ -1,18 +1,40 @@
-import { template, templatePost } from '../utils.js';
+import { template } from '../utils.js';
 
 const showPost = (doc, id) => {
-  const homePost = `
-    <div class="post-container">
-          <div class="post-header">
+  const deleteButton = doc.uid === firebase.auth().currentUser.uid ? `<button class="buttons btn-delete-post" id="del-${id}"></button>` : '';
+
+  const editButton = doc.uid === firebase.auth().currentUser.uid ? `<button class="buttons btn-edit-post" id="edit-${id}"></button>` : '';
+
+  const options1 = {
+    month: 'long', day: 'numeric', year: 'numeric',
+  };
+
+  const options2 = {
+    hour12: 'true', hour: 'numeric', minute: 'numeric',
+  };
+
+  const date = new Date(doc.date.toDate()).toLocaleDateString('es-ES', options1);
+
+  const hour = new Date(doc.date.toDate()).toLocaleTimeString('es-ES', options2);
+
+  const likeCount = async () => {
+    const gettingInfo = await firebase.firestore().collection('posts').doc(`${id}`).get();
+    const likeCounter = gettingInfo.data().reactionlike;
+    document.getElementById(`likes-count-${id}`).innerHTML = likeCounter;
+  };
+  // todo: colocarle al de content lo mismo que al de likes
+
+  const postsContainer = `
+          <div class="post-header" id='post-${id}'>
             <div class="post-author-title">
-                <span class="post-user">${doc.nameUser}</span> - 
-                <span class="post-title">hola</span>
+                <span class="post-user">${doc.nameUser}</span> 
             </div>
-            <button class="buttons btn-delete-post" id="${id}"></button>
+            ${editButton}
+           ${deleteButton}
           </div>
-          <textarea type="text" id="text${id}" class="post" disabled>${doc.content}</textarea>
+          <textarea type="text" id="text-${id}" class="post" disabled>${doc.content}</textarea>
           <div class="post-footer">
-            <button id="like${id}" class="buttons btn-likes">
+            <button id="likes-${id}" class="buttons btn-likes">
 
               <svg width="29" height="29">
                 <g fill-rule="evenodd">
@@ -23,15 +45,18 @@ const showPost = (doc, id) => {
               </svg>
 
             </button>
-            <span class="post-likes-count">10</span>
-          </div>
+            <span class="post-likes-count" id="likes-count-${id}"></span>
+            <span class="post-date">${date} - ${hour}</span>
           </div>`;
   const listItem = document.createElement('div');
-  listItem.innerHTML = homePost;
-  templatePost(listItem);
+  listItem.className = 'post-container';
+  listItem.innerHTML = postsContainer;
+  likeCount();
+
+  return listItem;
 };
 
-const showHome = (username, arr) => {
+const showHome = (username, arr, cb) => {
   const homePage = `<nav role="navigation" >
   <div class="burger">
     <div class="line1"></div>
@@ -82,7 +107,6 @@ const showHome = (username, arr) => {
 
   </div>
 
-
   <div class="right">
 
     <div class="new-post-container">
@@ -95,19 +119,18 @@ const showHome = (username, arr) => {
 
   </div>
 
-
 </div>`;
   document.getElementById('root').classList.remove('container');
   document.getElementById('body').classList.add('body-home');
 
-  arr.forEach((post) => {
-    console.log(post);
-
-    showPost(post.doc, post.id);
-  });
   template(homePage);
-};
 
+  const posts = document.getElementById('post');
+  arr.forEach((post) => {
+    posts.prepend(showPost(post.data, post.idpost));
+  });
+  cb();
+};
 
 export {
   showHome, showPost,
