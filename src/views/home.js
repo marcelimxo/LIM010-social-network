@@ -69,13 +69,13 @@ const showHome = (username, arr, cb) => {
   </div>
 
   <div class="logo">
-    <img src="/src/img/poetik-logo.png" alt="Poetik">
+    <img src="src/img/poetik-logo.png" alt="Poetik">
   </div>
 
   <ul class="nav-links xs-hide">
     <li>
       <a href="#/sign-out">
-        <img src="/src/img/logout.png" alt="cerrar sesión" class="sign-out-icon"> Cerrar sesión</a>
+        <img src="src/img/logout.png" alt="cerrar sesión" class="sign-out-icon"> Cerrar sesión</a>
     </li>
   </ul>
 
@@ -88,7 +88,7 @@ const showHome = (username, arr, cb) => {
     </li>
     <li>
       <a href="#/sign-out">
-        <img src="/src/img/logout.png" alt="cerrar sesión" class="sign-out-icon"> Cerrar sesión</a>
+        <img src="src/img/logout.png" alt="cerrar sesión" class="sign-out-icon"> Cerrar sesión</a>
     </li>
 
   </ul>
