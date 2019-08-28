@@ -1,5 +1,3 @@
-let arr = [];
-
 const addPost = async (textNewPost, uid) => {
   const gettingInfo = await firebase.firestore().collection('users').doc(`${uid}`).get();
   firebase.firestore().collection('posts')
@@ -14,14 +12,10 @@ const addPost = async (textNewPost, uid) => {
 };
 
 const getPost = (callback) => {
-  firebase.firestore().collection('posts').orderBy('date', 'asc').onSnapshot({ includeMetadataChanges: false }, (querySnapshot) => {
-    querySnapshot.docChanges().forEach(({ type, doc }) => {
-      if (type === 'removed') {
-        arr = arr.filter(({ idpost }) => idpost !== doc.id);
-      }
-      if (type === 'added') {
-        arr.push({ data: doc.data(), idpost: doc.id });
-      }
+  firebase.firestore().collection('posts').orderBy('date', 'asc').onSnapshot((querySnapshot) => {
+    const arr = [];
+    querySnapshot.forEach((doc) => {
+      arr.push({ data: doc.data(), idpost: doc.id });
     });
     callback(arr);
   });
