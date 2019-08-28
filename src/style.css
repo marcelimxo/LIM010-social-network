@@ -290,7 +290,7 @@ div#post {
 .btn-delete-post {
   border-radius: 50%;
   margin: 0px;
-  background-image: url("src/img/delete.png");
+  background-image: url("img/delete.png");
   background-repeat: no-repeat;
   background-position: center;
   background-color: #ff070726;
@@ -306,7 +306,7 @@ div#post {
 .btn-edit-post {
   border-radius: 50%;
   margin: 0px 10px 0px 0px;
-  background-image: url(src/img/edit.png);
+  background-image: url("img/edit.png");
   background-repeat: no-repeat;
   background-position: center;
   background-color: #ff98004a;
