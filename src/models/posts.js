@@ -12,11 +12,14 @@ const addPost = async (textNewPost, uid, privacity) => {
 };
 
 const getPost = (callback) => {
-  firebase.firestore().collection('posts').where('public', '==', 'true').orderBy('date', 'asc')
+  const id = firebase.auth().currentUser.uid;
+  firebase.firestore().collection('posts').orderBy('date', 'asc')
     .onSnapshot((querySnapshot) => {
       const arr = [];
       querySnapshot.forEach((doc) => {
-        arr.push({ data: doc.data(), idpost: doc.id });
+        if (id === doc.data().uid || doc.data().public === 'true') {
+          arr.push({ data: doc.data(), idpost: doc.id });
+        }
       });
       callback(arr);
     });
