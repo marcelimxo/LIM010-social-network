@@ -16,8 +16,9 @@ export default async () => {
       const inputText = document.getElementById('post-text');
       if (inputText.value !== '') {
         if (uid) {
+          const select = document.getElementById('select').value;
           inputText.classList.remove('post-error');
-          addPost(inputText.value, uid);
+          addPost(inputText.value, uid, select);
           inputText.value = '';
         }
       } else {
