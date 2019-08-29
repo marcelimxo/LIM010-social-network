@@ -1,4 +1,4 @@
-const addPost = async (textNewPost, uid) => {
+const addPost = async (textNewPost, uid, privacity) => {
   const gettingInfo = await firebase.firestore().collection('users').doc(`${uid}`).get();
   firebase.firestore().collection('posts')
     .add({
@@ -6,19 +6,23 @@ const addPost = async (textNewPost, uid) => {
       date: new Date(),
       content: textNewPost,
       nameUser: gettingInfo.data().name,
-      public: true,
+      public: privacity,
       reactionlike: 0,
     });
 };
 
 const getPost = (callback) => {
-  firebase.firestore().collection('posts').orderBy('date', 'asc').onSnapshot((querySnapshot) => {
-    const arr = [];
-    querySnapshot.forEach((doc) => {
-      arr.push({ data: doc.data(), idpost: doc.id });
+  const id = firebase.auth().currentUser.uid;
+  firebase.firestore().collection('posts').orderBy('date', 'asc')
+    .onSnapshot((querySnapshot) => {
+      const arr = [];
+      querySnapshot.forEach((doc) => {
+        if (id === doc.data().uid || doc.data().public === 'true') {
+          arr.push({ data: doc.data(), idpost: doc.id });
+        }
+      });
+      callback(arr);
     });
-    callback(arr);
-  });
 };
 
 const editStatusPost = async (uidPost, status) => {

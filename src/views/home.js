@@ -112,6 +112,12 @@ const showHome = (username, arr, cb) => {
     <div class="new-post-container">
 
       <textarea type="text" id="post-text" class="post" placeholder="¿Qué quieres compartir?" required></textarea>
+      <div>
+          <select id="select">
+            <option value="true">Público</option>
+            <option value="false">Privado</option>
+          </select>
+      </div>
       <button id="button-post" class="buttons btn-post">Compartir</button>
     </div>
 
