@@ -1,11 +1,5 @@
-const login = async (email, password) => {
-  try {
-    await firebase.auth().signInWithEmailAndPassword(email, password);
-    return { error: false };
-  } catch (error) {
-    return { error: true };
-  }
-};
+const login = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
+
 
 const registerWithEmail = async (email, password) => {
   try {

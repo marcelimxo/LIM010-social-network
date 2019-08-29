@@ -76,12 +76,16 @@
         <div class="post-container">
           <div class="post-header">
             <div class="post-author-title">
-                <span class="post-user">${username}</span> - 
-                <span class="post-title">${title}</span>
+                <label class="btn btn-default active">
+                    <input type="checkbox" name="options" >
+                    <div>Word</div>
+                  </label>
+              <span class="post-user">${username}</span> -
+              <span class="post-title">${title}</span>
             </div>
             <button class="buttons btn-edit-post"></button>
             <button class="buttons btn-delete-post"></button>
-            
+
           </div>
           <textarea type="text" id="${postId}" class="post" disabled>hola hola</textarea>
           <div class="post-footer">
@@ -96,15 +100,16 @@
               </svg>
 
             </button>
-            <span class="post-likes-count">10</span>
-           </div>
-         </div>
+            <span class="post-likes-count" id="likes-count-${id}"></span>
+            <span class="post-date">${date} - ${hour}</span>
+          </div>
+        </div>
 
       </div>
 
 
     </div>
-</div>
+  </div>
 </body>
 
 </html>
