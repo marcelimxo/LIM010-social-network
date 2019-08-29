@@ -26,7 +26,7 @@ const getPost = (callback) => {
 };
 
 const editStatusPost = async (uidPost, status) => {
-  await firebase.firestore().collection('posts').doc(`${uidPost}`).update({
+  await firebase.firestore().collection('posts').doc(`${uidPost}`).set({
     public: status,
   });
 };
