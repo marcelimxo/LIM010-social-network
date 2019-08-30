@@ -1,7 +1,7 @@
 import { showHome } from '../views/home.js';
 import { getUserInfo } from '../models/users.js';
 import {
-  addPost, getPost, deletePost, editTextPost, addLikes,
+  addPost, getPost, deletePost, editTextPost, addLikes, editStatusPost,
 } from '../models/posts.js';
 
 
@@ -51,6 +51,9 @@ export default async () => {
         const uidPost = key.slice(6, 26);
         const likeCount = await addLikes(uidPost);
         document.getElementById(`likes-count-${uidPost}`).innerHTML = likeCount;
+      } else if (key.includes('select')) {
+        const uidPost = key.slice(7, 26);
+        await editStatusPost(uidPost, false);
       } else if (key.includes('edit')) {
         const uidPost = key.slice(5, 26);
         const postText = document.getElementById(`text-${uidPost}`);

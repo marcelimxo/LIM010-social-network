@@ -5,6 +5,11 @@ const showPost = (doc, id) => {
 
   const editButton = doc.uid === firebase.auth().currentUser.uid ? `<button class="buttons btn-edit-post" id="edit-${id}"></button>` : '';
 
+  const editPrivacity = doc.uid === firebase.auth().currentUser.uid ? ` <select id="select-${id}" class="buttons btn-post" >
+  <option value="true"  >Público</option>
+  <option value="false" >Privado</option>
+</select>` : '';
+
   const options1 = {
     month: 'long', day: 'numeric', year: 'numeric',
   };
@@ -46,6 +51,7 @@ const showPost = (doc, id) => {
 
             </button>
             <span class="post-likes-count" id="likes-count-${id}"></span>
+            ${editPrivacity}
             <span class="post-date">${date} - ${hour}</span>
           </div>`;
   const listItem = document.createElement('div');
@@ -112,12 +118,10 @@ const showHome = (username, arr, cb) => {
     <div class="new-post-container">
 
       <textarea type="text" id="post-text" class="post" placeholder="¿Qué quieres compartir?" required></textarea>
-      <div>
-          <select id="select">
-            <option value="true">Público</option>
-            <option value="false">Privado</option>
+          <select id="select" class="buttons btn-post" >
+            <option value="true"  >Público</option>
+            <option value="false" >Privado</option>
           </select>
-      </div>
       <button id="button-post" class="buttons btn-post">Compartir</button>
     </div>
 
