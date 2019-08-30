@@ -30,16 +30,9 @@ describe('login', () => {
     expect(typeof login).toBe('function');
   });
 
-  it('deberia retornar un objeto', () => {
-    expect(typeof login()).toBe('object');
-  });
-
-  it('deberia resolver un objeto cuando sea exito', () => login()
-    .then(obj => expect(typeof obj).toBe('object')));
-
-  it('debería logguearse con el email "diego@gmail.com" y la contraseña "diego1234"', () => login('diego@gmail.com', 'diego1234')
+  it('Debería poder iniciar sesion', () => login('front@end.la', '123456')
     .then((user) => {
-      expect(user.error).toBe(false);
+      expect(user.email).toBe('front@end.la');
     }));
 });
 

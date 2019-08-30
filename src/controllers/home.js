@@ -6,7 +6,6 @@ import {
 
 
 export default async () => {
-//  console.log(await login('marce', '12345'));
   const { uid } = await firebase.auth().currentUser;
   const { name } = await getUserInfo(uid);
 
