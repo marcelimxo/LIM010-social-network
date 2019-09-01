@@ -227,7 +227,7 @@ div#post {
   padding: 20px;
   display: flex;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: space-between;
   flex-flow: wrap;
   background-color: #f2c57c2b;
 }
@@ -239,6 +239,17 @@ div#post {
 .btn-post {
   margin: 10px 0;
   padding: 10px;
+  font-size: 1.03rem;
+}
+
+.btn-status {
+  -webkit-appearance: none;
+  background: url(img/select.png) no-repeat right #e6e6e6;
+  background-position-x: 87%;
+  background-position-y: 52%;
+  background-size: 13%;
+  margin: 10px 0;
+  padding: 10px 40px 10px 20px;
   font-size: 1.03rem;
 }
 

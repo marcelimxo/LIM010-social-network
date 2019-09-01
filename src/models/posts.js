@@ -17,7 +17,7 @@ const getPost = (callback) => {
     .onSnapshot((querySnapshot) => {
       const arr = [];
       querySnapshot.forEach((doc) => {
-        if (id === doc.data().uid || doc.data().public === 'true') {
+        if (id === doc.data().uid || doc.data().public === true) {
           arr.push({ data: doc.data(), idpost: doc.id });
         }
       });
@@ -25,9 +25,9 @@ const getPost = (callback) => {
     });
 };
 
-const editStatusPost = async (uidPost, status) => {
+const editStatusPost = async (uidPost, privacity) => {
   await firebase.firestore().collection('posts').doc(`${uidPost}`).update({
-    public: status,
+    public: privacity,
   });
 };
 
@@ -38,7 +38,7 @@ const editTextPost = async (uid, text) => {
 
   const gettingInfo = await firebase.firestore().collection('posts').doc(`${uid}`).get();
   const postTextContent = gettingInfo.data().content;
-  console.log(postTextContent);
+
   return postTextContent;
 };
 

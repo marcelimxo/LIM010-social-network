@@ -5,9 +5,9 @@ const showPost = (doc, id) => {
 
   const editButton = doc.uid === firebase.auth().currentUser.uid ? `<button class="buttons btn-edit-post" id="edit-${id}"></button>` : '';
 
-  const editPrivacity = doc.uid === firebase.auth().currentUser.uid ? ` <select id="select-${id}" class="buttons btn-post" >
-  <option value="true"  >Público</option>
-  <option value="false" >Privado</option>
+  const editPrivacity = doc.uid === firebase.auth().currentUser.uid ? ` <select id="select-${id}" class="buttons btn-status">
+  <option value="true" ${doc.public ? 'selected' : ''}>Público</option>
+  <option value="false" ${!doc.public ? 'selected' : ''}>Privado</option>
 </select>` : '';
 
   const options1 = {
@@ -108,7 +108,7 @@ const showHome = (username, arr, cb) => {
       <div class="user-img">
         <img src="https://placekitten.com/100/100" alt="user">
       </div>
-      <p>${username}!</p>
+      <p>${username}</p>
     </div>
 
   </div>
@@ -118,9 +118,9 @@ const showHome = (username, arr, cb) => {
     <div class="new-post-container">
 
       <textarea type="text" id="post-text" class="post" placeholder="¿Qué quieres compartir?" required></textarea>
-          <select id="select" class="buttons btn-post" >
-            <option value="true"  >Público</option>
-            <option value="false" >Privado</option>
+          <select id="select" class="buttons btn-status" >
+            <option value="true" selected>Público</option>
+            <option value="false">Privado</option>
           </select>
       <button id="button-post" class="buttons btn-post">Compartir</button>
     </div>
