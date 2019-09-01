@@ -4,11 +4,6 @@ import {
   registerUserFacebook, addUserToFirestore, getUserInfo,
 } from '../src/models/users.js';
 
-import {
-  addPost, getPost, editStatusPost,
-  editTextPost, deletePost, addLikes,
-} from '../src/models/posts.js';
-
 // configurando firebase mock
 const firebasemock = require('firebase-mock');
 
@@ -29,7 +24,7 @@ beforeEach(() => {
 });
 
 
-// iniciando tests login
+// iniciando tests
 describe('login', () => {
   it('debería ser una función', () => {
     expect(typeof login).toBe('function');
@@ -173,76 +168,6 @@ describe('addUserToFirestore', () => {
 
   it('no debería agregar ningún usuario a la base de datos', () => {
     addUserToFirestore().catch((user) => {
-      expect(user.error).toBe(true);
-    });
-  });
-});
-
-// iniciando test posts
-
-describe('addPost', () => {
-  it('debería ser una función', () => {
-    expect(typeof addPost).toBe('function');
-  });
-  it('deberia retornar un objeto', () => {
-    expect(typeof addPost('prueba de test', '1218gg7X5FMHpX1jenc1oo8fKtw2', false)).toBe('object');
-  });
-});
-
-describe('getPost', () => {
-  it('debería ser una función', () => {
-    expect(typeof getPost).toBe('function');
-  });
-});
-
-describe('editStatusPost', () => {
-  it('debería ser una función', () => {
-    expect(typeof editStatusPost).toBe('function');
-  });
-});
-
-describe('editTextPost', () => {
-  it('debería ser una función', () => {
-    expect(typeof editTextPost).toBe('function');
-  });
-  it('debería retornar un string', () => {
-    expect(typeof editTextPost('1UhG454Qww7Jls7H6FZm', 'texto nuevo')).toBe('object');
-  });
-  it('no debería cambiar el texto de ningun post', () => {
-    editTextPost('texto nuevo').catch((user) => {
-      expect(user.error).toBe(true);
-    });
-  });
-  it('postTextContent debería ser "texto nuevo"', () => {
-    editTextPost('1UhG454Qww7Jls7H6FZm', 'texto nuevo').catch((postTextContent) => {
-      expect(postTextContent).toBe('texto nuevo');
-    });
-  });
-});
-
-describe('deletePost', () => {
-  it('debería ser una función', () => {
-    expect(typeof deletePost).toBe('function');
-  });
-
-  it('no debería eliminar ningún post de la base de datos', () => {
-    deletePost().catch((user) => {
-      expect(user.error).toBe(true);
-    });
-  });
-});
-
-describe('addLikes', () => {
-  it('debería ser una función', () => {
-    expect(typeof addLikes).toBe('function');
-  });
-
-  it('debería retornar un objeto', () => {
-    expect(typeof addLikes('1MRrenMTpBLuUSfnHPvY')).toBe('object');
-  });
-
-  it('no debería añadir likes ningún post de la base de datos', () => {
-    addLikes().catch((user) => {
       expect(user.error).toBe(true);
     });
   });

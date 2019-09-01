@@ -26,7 +26,7 @@ const getPost = (callback) => {
 };
 
 const editStatusPost = async (uidPost, status) => {
-  await firebase.firestore().collection('posts').doc(`${uidPost}`).update({
+  await firebase.firestore().collection('posts').doc(`${uidPost}`).set({
     public: status,
   });
 };
@@ -38,7 +38,7 @@ const editTextPost = async (uid, text) => {
 
   const gettingInfo = await firebase.firestore().collection('posts').doc(`${uid}`).get();
   const postTextContent = gettingInfo.data().content;
-  console.log(postTextContent);
+
   return postTextContent;
 };
 
@@ -53,6 +53,7 @@ const addLikes = async (uid) => {
 
   const gettingInfo = await firebase.firestore().collection('posts').doc(`${uid}`).get();
   const likeCount = gettingInfo.data().reactionlike;
+
   return likeCount;
 };
 
