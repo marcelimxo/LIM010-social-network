@@ -6,5 +6,6 @@ export default () => {
     const file = e.target.files[0];
     const storageRef = addUserPhotoToStorage(file.name);
     const task = storageRef.put(file);
+    console.log(task);
   });
 };

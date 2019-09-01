@@ -1,5 +1,3 @@
-/* eslint-disable jest/no-identical-title */
-/* eslint-disable indent */
 // importamos la funcion que vamos a testear
 import {
   login, registerWithEmail, registerUserGoogle,
@@ -37,30 +35,9 @@ describe('login', () => {
     expect(typeof login).toBe('function');
   });
 
-  it('deberia retornar un objeto', () => {
-    expect(typeof login()).toBe('object');
-  });
-
-  it('deberia resolver un objeto cuando sea exito', () => {
-    login()
-      .then((obj) => {
-        expect(typeof obj).toBe('object');
-      });
-  });
-
-  it('debería logguearse con el email "diego@gmail.com" y la contraseña "diego1234"', () => login('diego@gmail.com', 'diego1234')
+  it('Debería poder iniciar sesion', () => login('front@end.la', '123456')
     .then((user) => {
-      expect(user.error).toBe(false);
-    }));
-
-    it('deberia resolver un objeto cuando sea fallido', () => login('', '1234')
-    .catch((obj) => {
-      expect(typeof obj).toBe('object');
-    }));
-
-  it('debería dar error al intentar loguearse sin email', () => login('', '1234')
-    .catch((user) => {
-      expect(user.error).toBe(true);
+      expect(user.email).toBe('front@end.la');
     }));
 });
 
@@ -80,8 +57,9 @@ describe('registerWithEmail', () => {
       });
   });
 
-  it('debería registrar un usuario con el correo "ruth@gmail.com" y la contraseña "ruth1234"', () => registerWithEmail('ruth@gmail.com', 'ruth123456789').catch((user) => {
+  it('debería registrar un usuario con el correo "ruth@gmail.com" y la contraseña "ruth1234"', done => registerWithEmail('ruth@gmail.com', 'ruth123456789').catch((user) => {
     expect(user.error).toBe(false);
+    done();
   }));
 
   it('debería dar error al intentar registrar un usuario sin contraseña', () => registerWithEmail('ruth@gmail.com', '').catch((user) => {

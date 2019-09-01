@@ -6,18 +6,18 @@ import {
 import errorController from './errors.js';
 import { redirect } from '../utils.js';
 
-export default async () => {
+export default () => {
   loginPage();
   const buttonLogin = document.getElementById('button-login');
   buttonLogin.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const { error, code } = await login(email, password);
-    if (error) {
-      errorController(code);
-    } else {
+    try {
+      await login(email, password);
       redirect('home');
+    } catch (error) {
+      errorController(error.code);
     }
   });
 
