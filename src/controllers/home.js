@@ -51,8 +51,9 @@ export default async () => {
         const likeCount = await addLikes(uidPost);
         document.getElementById(`likes-count-${uidPost}`).innerHTML = likeCount;
       } else if (key.includes('select')) {
-        const uidPost = key.slice(7, 26);
-        await editStatusPost(uidPost, false);
+        const uidPost = key.slice(7, 27);
+        const select = document.getElementById(`select-${uidPost}`).value;
+        await editStatusPost(uidPost, select);
       } else if (key.includes('edit')) {
         const uidPost = key.slice(5, 26);
         const postText = document.getElementById(`text-${uidPost}`);
