@@ -328,7 +328,7 @@ div#post {
 }
 
 .post:disabled {
-  background-color: #fff;
+  background-color: #fdfcfd99;
   color: #353a47;
 }
 
@@ -395,7 +395,7 @@ progress#uploader {
   margin: 10px 0;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   nav {
     padding: 0;
   }
