@@ -1,6 +1,7 @@
 import loginController from '../controllers/login.js';
 import registerController from '../controllers/register.js';
 import homeController from '../controllers/home.js';
+import profileController from '../controllers/profile.js';
 
 import { redirect } from '../utils.js';
 
@@ -20,6 +21,9 @@ export default () => {
         break;
       case '/home':
         next = homeController;
+        break;
+      case '/profile':
+        next = profileController;
         break;
 
       case '/sign-out':
