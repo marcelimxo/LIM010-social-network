@@ -19,7 +19,7 @@ const getPost = (callback) => {
     .onSnapshot((querySnapshot) => {
       const arr = [];
       querySnapshot.forEach((doc) => {
-        if (id === doc.data().uid || doc.data().public === 'true') {
+        if (id === doc.data().uid || doc.data().public === true) {
           arr.push({ data: doc.data(), idpost: doc.id });
         }
       });
@@ -27,11 +27,11 @@ const getPost = (callback) => {
     });
 };
 
-const editStatusPost = async (uidPost, status) => {
+const editStatusPost = async (uidPost, privacity) => {
   await firebase.firestore().collection('posts').doc(`${uidPost}`).update({
-    public: status,
+    public: privacity,
   });
-  const gettingInfo = await firebase.firestore().collection('posts').doc(`${uid}`).get();
+  const gettingInfo = await firebase.firestore().collection('posts').doc(`${uidPost}`).get();
   const postStatus = gettingInfo.data().public;
   return postStatus;
 };
@@ -63,4 +63,14 @@ const addLikes = async (uid) => {
 
 export {
   getPost, editStatusPost, addPost, editTextPost, deletePost, addLikes,
+};
+export const add = async (textNewPost, uid, privacity) => {
+  const get = firebase.firestore().collection('posts')
+    .add({
+      uid,
+      content: textNewPost,
+      public: privacity,
+      reactionlike: 0,
+    });
+  return get;
 };

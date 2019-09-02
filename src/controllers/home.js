@@ -17,7 +17,13 @@ export default async () => {
         if (uid) {
           const select = document.getElementById('select').value;
           inputText.classList.remove('post-error');
-          addPost(inputText.value, uid, select);
+          let status;
+          if (select === 'true') {
+            status = true;
+          } else {
+            status = false;
+          }
+          addPost(inputText.value, uid, status);
           inputText.value = '';
         }
       } else {
@@ -50,10 +56,16 @@ export default async () => {
         const uidPost = key.slice(6, 26);
         const likeCount = await addLikes(uidPost);
         document.getElementById(`likes-count-${uidPost}`).innerHTML = likeCount;
-      } else if (key.includes('select')) {
+        /*       } else if (key.includes('select')) {
         const uidPost = key.slice(7, 27);
         const select = document.getElementById(`select-${uidPost}`).value;
-        await editStatusPost(uidPost, select);
+        let status;
+        if (select === 'true') {
+          status = true;
+        } else {
+          status = false;
+        }
+        await editStatusPost(uidPost, status); */
       } else if (key.includes('edit')) {
         const uidPost = key.slice(5, 26);
         const postText = document.getElementById(`text-${uidPost}`);
@@ -68,6 +80,20 @@ export default async () => {
         });
       }
     });
+
+    document.querySelectorAll('select').forEach(postStatus => postStatus.addEventListener('change', (e) => {
+      const postId = e.target.id;
+      const uidPost = postId.slice(7, 27);
+      let status;
+      if (postId.indexOf('select') === 0) {
+        if (postStatus.value === 'true') {
+          status = true;
+        } else {
+          status = false;
+        }
+      }
+      editStatusPost(uidPost, status);
+    }));
   };
   const getInfo = arr => showHome(name, arr, listenersFunctions);
   getPost(getInfo);
