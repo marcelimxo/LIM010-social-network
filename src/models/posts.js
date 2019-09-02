@@ -1,14 +1,16 @@
+/* eslint-disable no-console */
 const addPost = async (textNewPost, uid, privacity) => {
   const gettingInfo = await firebase.firestore().collection('users').doc(`${uid}`).get();
-  firebase.firestore().collection('posts')
+  const get = firebase.firestore().collection('posts')
     .add({
-      uid,
+      uaid: uid,
       date: new Date(),
       content: textNewPost,
       nameUser: gettingInfo.data().name,
       public: privacity,
       reactionlike: 0,
     });
+  return get;
 };
 
 const getPost = (callback) => {
@@ -59,4 +61,14 @@ const addLikes = async (uid) => {
 
 export {
   getPost, editStatusPost, addPost, editTextPost, deletePost, addLikes,
+};
+export const add = async (textNewPost, uid, privacity) => {
+  const get = firebase.firestore().collection('posts')
+    .add({
+      uid,
+      content: textNewPost,
+      public: privacity,
+      reactionlike: 0,
+    });
+  return get;
 };
