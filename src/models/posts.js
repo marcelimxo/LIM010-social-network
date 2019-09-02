@@ -31,6 +31,9 @@ const editStatusPost = async (uidPost, status) => {
   await firebase.firestore().collection('posts').doc(`${uidPost}`).update({
     public: status,
   });
+  const gettingInfo = await firebase.firestore().collection('posts').doc(`${uid}`).get();
+  const postStatus = gettingInfo.data().public;
+  return postStatus;
 };
 
 const editTextPost = async (uid, text) => {
@@ -40,7 +43,6 @@ const editTextPost = async (uid, text) => {
 
   const gettingInfo = await firebase.firestore().collection('posts').doc(`${uid}`).get();
   const postTextContent = gettingInfo.data().content;
-  console.log(postTextContent);
   return postTextContent;
 };
 
@@ -61,14 +63,4 @@ const addLikes = async (uid) => {
 
 export {
   getPost, editStatusPost, addPost, editTextPost, deletePost, addLikes,
-};
-export const add = async (textNewPost, uid, privacity) => {
-  const get = firebase.firestore().collection('posts')
-    .add({
-      uid,
-      content: textNewPost,
-      public: privacity,
-      reactionlike: 0,
-    });
-  return get;
 };

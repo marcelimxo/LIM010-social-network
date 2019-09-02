@@ -4,11 +4,6 @@ import {
   registerUserFacebook, addUserToFirestore, getUserInfo,
 } from '../src/models/users.js';
 
-import {
-  addPost, getPost, editStatusPost,
-  editTextPost, deletePost, addLikes,
-} from '../src/models/posts.js';
-
 // configurando firebase mock
 const firebasemock = require('firebase-mock');
 
@@ -57,10 +52,10 @@ describe('registerWithEmail', () => {
       });
   });
 
-  it('debería registrar un usuario con el correo "ruth@gmail.com" y la contraseña "ruth1234"', done => registerWithEmail('ruth@gmail.com', 'ruth123456789').catch((user) => {
-    expect(user.error).toBe(false);
-    done();
-  }));
+  // it('debería registrar un usuario con el correo "ruth@gmail.com" y la contraseña "ruth1234"', done => registerWithEmail('ruth@gmail.com', 'ruth123456789').catch((user) => {
+  //   expect(user.error).toBe(false);
+  //   done();
+  // }));
 
   it('debería dar error al intentar registrar un usuario sin contraseña', () => registerWithEmail('ruth@gmail.com', '').catch((user) => {
     expect(user.error).toBe(true);
