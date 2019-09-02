@@ -344,21 +344,119 @@ div#post {
 }
 
 .btn-likes {
-  padding: 10px;
+  padding: 1.35rem;
   border-radius: 50%;
   background-color: #cbf27c;
-  fill: #353a47;
+  background-image: url(img/clap.png);
+  background-size: 61%;
+  background-position-y: center;
+  background-position-x: center;
+  background-repeat: no-repeat;
   margin: 5px;
-}
-
-.post-likes-count {
-  font-size: 1.2rem;
-  margin: 0;
 }
 
 .btn-likes:hover {
   background-color: #baee53;
   fill: #000000;
+}
+
+.post-counter {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.post-new-comment {
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  padding: 0px 20px;
+  flex-flow: row;
+}
+
+.post-comment-textarea {
+  width: 88%;
+  border-radius: 16px 0 0 16px;
+  resize: none;
+  padding: 10px;
+  outline: none;
+  margin: 10px 0;
+  border-right: none;
+}
+
+.btn-comment {
+  border-radius: 0 16px 16px 0px;
+  background-color: #c5d3d3;
+  margin: 10px 0;
+  padding: 1rem;
+}
+
+.btn-comment:hover {
+  background-color: hsla(180, 20%, 80%, 1);
+  font-weight: 500;
+}
+
+.btn-comments {
+  padding: 1.35rem;
+  border-radius: 50%;
+  background-color: #cbe7e7;
+  background-image: url(img/comment.png);
+  background-size: 61%;
+  background-position-y: center;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  margin: 5px 5px 5px 15px;
+}
+
+.btn-comments:hover {
+  background-color: #badddd;
+}
+
+.post-comment {
+  display: flex;
+  width: 95%;
+  margin: 5px auto;
+}
+
+.post-comment-user {
+  margin: 5px 5px 5px 10px;
+  height: 32px;
+  width: 32px;
+}
+
+.post-comment-user img {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+}
+
+.post-comment-content {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.post-comment-text {
+  background-color: #ddb5e880;
+  border-radius: 18px;
+  padding: 8px 10px;
+  width: 100%;
+  display: flex;
+}
+.post-comment-text p {
+  margin: 0px 1px;
+  line-height: 17px;
+  word-wrap: break-word;
+  white-space: normal;
+  word-break: break-word;
+  font-size: 0.9rem;
+}
+.post-comment-autor {
+  font-weight: 500;
+  margin: 0;
+}
+
+.post-comment-date {
+  align-self: flex-end;
+  margin: 0;
 }
 
 /* Profile */
@@ -452,6 +550,5 @@ progress#uploader {
 }
 
 .select {
-  margin-right: 15%
+  margin-right: 15%;
 }
-
