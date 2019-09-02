@@ -42,7 +42,7 @@ const showPost = (doc, id) => {
           <div class="post-footer">
             <button id="likes-${id}" class="buttons btn-likes">
             </button>
-            <span class="post-likes-count" id="likes-count-${id}"></span>
+            <span class="post-counter" id="likes-count-${id}"></span>
             <span class="post-date">${date} - ${hour}</span>
           </div>`;
   const listItem = document.createElement('div');
