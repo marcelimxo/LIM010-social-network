@@ -3,7 +3,7 @@ const addPost = async (textNewPost, uid, privacity) => {
   const gettingInfo = await firebase.firestore().collection('users').doc(`${uid}`).get();
   const get = firebase.firestore().collection('posts')
     .add({
-      uaid: uid,
+      uid,
       date: new Date(),
       content: textNewPost,
       nameUser: gettingInfo.data().name,
