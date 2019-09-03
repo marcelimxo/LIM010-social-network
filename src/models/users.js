@@ -1,6 +1,9 @@
+// Aquí se encuentran todas las funciones relacionadas con el usuario y la base de datos
+
+// Inicia sesión
 const login = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
 
-
+// Registra con Email
 const registerWithEmail = async (email, password) => {
   try {
     const { user: { uid } } = await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -12,6 +15,7 @@ const registerWithEmail = async (email, password) => {
   }
 };
 
+// Registra con google
 const registerUserGoogle = async () => {
   try {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -28,6 +32,7 @@ const registerUserGoogle = async () => {
   }
 };
 
+// Registra con facebook
 const registerUserFacebook = async () => {
   try {
     const provider = new firebase.auth.FacebookAuthProvider();
@@ -44,6 +49,7 @@ const registerUserFacebook = async () => {
   }
 };
 
+// Obtiene información del usuario
 const getUserInfo = async (uid) => {
   try {
     const gettingInfo = await firebase.firestore().collection('users').doc(`${uid}`).get();
@@ -55,16 +61,19 @@ const getUserInfo = async (uid) => {
   }
 };
 
+// Añade un  nuevo usuario a la base de datos
 const addUserToFirestore = async (email, name, authId) => {
   await firebase.firestore().collection('users').doc(`${authId}`).set({
     email, name,
   });
 };
 
+// Añade foto a la base de datos
 const addUserPhotoToStorage = (photo) => {
   firebase.storage().ref(`avatars/${photo}`);
 };
 
+// Se exportan las funciones
 export {
   login, registerWithEmail, registerUserGoogle,
   registerUserFacebook, addUserToFirestore, getUserInfo, addUserPhotoToStorage,

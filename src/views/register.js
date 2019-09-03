@@ -1,6 +1,8 @@
+// Importamos las funciones que vamos a usar
 import { template } from '../utils.js';
 
 export default () => {
+  // Template de la vista del registro
   const registerPage = ` 
 <div class="margin flex-column flex published-post"  >
   <div class="subtitle"> 

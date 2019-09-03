@@ -1,14 +1,15 @@
+// Importamos todas las funciones que vamos a usar
 import loginController from '../controllers/login.js';
 import registerController from '../controllers/register.js';
 import homeController from '../controllers/home.js';
 import profileController from '../controllers/profile.js';
-
 import { redirect } from '../utils.js';
 
-
 export default () => {
+  // Creamos nuestro router
   const routerSwitch = async () => {
     const routesWithoutAuth = ['/login', '/register'];
+    // Obtenemos la dirección de la página actual
     const { hash } = window.location;
     const currentRoute = hash.replace('#', '');
     let next;
@@ -59,6 +60,7 @@ export default () => {
 
   window.onload = () => routerSwitch();
 
+  // Cambiamos la vista
   window.addEventListener('hashchange', () => {
     routerSwitch();
   });

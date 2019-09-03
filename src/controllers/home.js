@@ -1,3 +1,4 @@
+
 import { showHome } from '../views/home.js';
 import { getUserInfo } from '../models/users.js';
 import {
@@ -9,8 +10,10 @@ export default async () => {
   const { uid } = await firebase.auth().currentUser;
   const { name } = await getUserInfo(uid);
 
+  // Función que se encarga de capturar un post nuevo
   const addPostOnSubmit = (evt) => {
     evt.preventDefault();
+    // Establecemos un observador en el objeto auth
     firebase.auth().onAuthStateChanged(() => {
       const inputText = document.getElementById('post-text');
       if (inputText.value !== '') {
@@ -18,11 +21,13 @@ export default async () => {
           const select = document.getElementById('select').value;
           inputText.classList.remove('post-error');
           let status;
+          // Asignamos el valor booleano para la privacidad del post
           if (select === 'true') {
             status = true;
           } else {
             status = false;
           }
+          // Añadimos el post a la base de datos
           addPost(inputText.value, uid, status);
           inputText.value = '';
         }
@@ -41,6 +46,7 @@ export default async () => {
     });
   };
 
+  // Añadimos los listeners de la visa de los posts
   const listenersFunctions = () => {
     const btnPost = document.getElementById('button-post');
     btnPost.addEventListener('click', addPostOnSubmit);
@@ -85,6 +91,8 @@ export default async () => {
       editStatusPost(uidPost, status);
     }));
   };
+
+  // Mostramos nuestra vista home
   const getInfo = arr => showHome(name, arr, listenersFunctions);
   getPost(getInfo);
 };
