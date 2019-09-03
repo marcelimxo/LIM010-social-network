@@ -1,7 +1,7 @@
 // Este es el punto de entrada de tu aplicacion
 import router from './routes/index.js';
 
-
+// Configuramos firebase con nuestra app
 const firebaseConfig = {
   apiKey: 'AIzaSyDvjpKbVQV9VFhj2kROad-0ZE_2BlNuA78',
   authDomain: 'poetik-1d0bc.firebaseapp.com',
@@ -12,7 +12,7 @@ const firebaseConfig = {
   appId: '1:85143804945:web:c774288a12be0a1f',
 
 };
-
+// Inicializamos Firebase
 firebase.initializeApp(firebaseConfig);
 
 router();

@@ -1,6 +1,10 @@
+/* eslint-disable no-trailing-spaces */
+// Importamos las funciones que vamos a usar
 import { template } from '../utils.js';
 
+// Template de un post
 const showPost = (doc, id) => {
+  // Operador ternario para saber si un post es del usuario logueado
   const deleteButton = doc.uid === firebase.auth().currentUser.uid ? `<button class="buttons btn-delete-post" id="del-${id}"></button>` : '';
 
   const editButton = doc.uid === firebase.auth().currentUser.uid ? `<button class="buttons btn-edit-post" id="edit-${id}"></button>` : '';
@@ -18,8 +22,9 @@ const showPost = (doc, id) => {
     hour12: 'true', hour: 'numeric', minute: 'numeric',
   };
 
+  // Fecha de creación de un post
   const date = new Date(doc.date.toDate()).toLocaleDateString('es-ES', options1);
-
+  // Hora de creación de un post
   const hour = new Date(doc.date.toDate()).toLocaleTimeString('es-ES', options2);
 
   const likeCount = async () => {
@@ -29,6 +34,7 @@ const showPost = (doc, id) => {
   };
   // todo: colocarle al de content lo mismo que al de likes
 
+  // Template del post
   const postsContainer = `
           <div class="post-header" id='post-${id}'>
             <div class="post-author-title">
@@ -53,6 +59,7 @@ const showPost = (doc, id) => {
   return listItem;
 };
 
+// Template del Home page
 const showHome = (username, arr, cb) => {
   const homePage = `<nav role="navigation" >
   <div class="burger">
@@ -128,11 +135,13 @@ const showHome = (username, arr, cb) => {
 
   const posts = document.getElementById('post');
   arr.forEach((post) => {
+    // Inserta al inicio
     posts.prepend(showPost(post.data, post.idpost));
   });
   cb();
 };
 
+// Exporta las funciones 
 export {
   showHome, showPost,
 };

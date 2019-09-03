@@ -1,6 +1,9 @@
+// Importamos las funciones que vamos a usar
 import { template } from '../utils.js';
 
+
 export default () => {
+  // Template del login page
   const loginPage = `
   <figure>
       <img class="login-logo" src="src/img/poetik-logo.png" alt="Poetik">

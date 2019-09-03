@@ -1,5 +1,7 @@
+// Importamos las funciones que vamos a usar
 import { template } from '../utils.js';
 
+// Template de la vista del perfil
 const profilePageView = (user) => {
   const profilePage = `  <div id="profile-container" class="container">
 

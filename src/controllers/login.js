@@ -1,4 +1,4 @@
-
+// Importamos las funciones que vamos a usar.
 import loginPage from '../views/login.js';
 import {
   login, addUserToFirestore, registerUserGoogle, registerUserFacebook,
@@ -7,7 +7,9 @@ import errorController from './errors.js';
 import { redirect } from '../utils.js';
 
 export default () => {
+  // Esta es nuestra vista del login.
   loginPage();
+  // Aquí logueamos los usuarios creados. 
   const buttonLogin = document.getElementById('button-login');
   buttonLogin.addEventListener('click', async (e) => {
     e.preventDefault();
@@ -21,6 +23,7 @@ export default () => {
     }
   });
 
+ // Aquí nos logueamos con google 
   const clickGoogle = document.getElementById('google');
   clickGoogle.addEventListener('click', async () => {
     const {
@@ -34,6 +37,7 @@ export default () => {
     }
   });
 
+  // Aquí nos logueamos con facebook 
   const clickFacebook = document.getElementById('fb');
   clickFacebook.addEventListener('click', async () => {
     const {

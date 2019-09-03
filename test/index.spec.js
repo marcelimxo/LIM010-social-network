@@ -52,6 +52,7 @@ describe('registerWithEmail', () => {
       });
   });
 
+  // eslint-disable-next-line max-len
   // it('debería registrar un usuario con el correo "ruth@gmail.com" y la contraseña "ruth1234"', done => registerWithEmail('ruth@gmail.com', 'ruth123456789').catch((user) => {
   //   expect(user.error).toBe(false);
   //   done();
